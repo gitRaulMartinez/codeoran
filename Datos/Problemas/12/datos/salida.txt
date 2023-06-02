@@ -1,0 +1,4 @@
+<p>
+                            La salida consiste en un solo entero, que indica el número mínimo de pases necesarios para pasar el balón del jugador 1 del equipo 1 al jugador n del equipo 1. Si no es posible pasar el balón del jugador 1 al
+                            Jugador n, imprime -1. 
+                        </p>

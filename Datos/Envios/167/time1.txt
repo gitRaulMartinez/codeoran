@@ -1,0 +1,6 @@
+Error: no se ha encontrado o cargado la clase principal PiezaPastel
+Causado por: java.lang.ClassNotFoundException: PiezaPastel
+
+real	0m0,054s
+user	0m0,067s
+sys	0m0,013s

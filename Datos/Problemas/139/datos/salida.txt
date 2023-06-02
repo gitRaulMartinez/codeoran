@@ -1,0 +1,1 @@
+<p>Imprime la distancia total recorrida por Lulu.</p>

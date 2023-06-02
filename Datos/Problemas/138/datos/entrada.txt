@@ -1,0 +1,1 @@
+<p>Solo hay una línea de entrada: contiene cinco números enteros, cada uno entre 0 y 300, inclusive. Suponga que la entrada representa una entrada válida, por ejemplo, PJ = G + E + D. Suponga también que la entrada no será todo ceros, es decir, se han jugado algunos juegos.</p>

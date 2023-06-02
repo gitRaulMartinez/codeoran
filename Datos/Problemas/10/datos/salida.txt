@@ -1,0 +1,3 @@
+<p>
+                            Para cada caso, debe imprimir el resultado de a × i<sup>b</sup> tal como se muestra en los ejemplos.
+                        </p>

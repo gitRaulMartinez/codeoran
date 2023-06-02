@@ -1,0 +1,25 @@
+<p>
+                            Dado un laberinto ortogonal girado 45 grados y dibujado con caracteres de barra inclinada hacia adelante y hacia atrás (ver más abajo), determine el número mínimo de paredes que deben eliminarse para asegurarse de que sea posible escapar fuera del laberinto de cada cuadrado del (posiblemente desconectado ) laberinto. 
+                        </p>
+                        <p>
+                            /\
+                        </p>
+                        <p>
+                            \/
+                        </p>
+                        <p>
+                            Este laberinto tiene solo un cuadrado completamente cerrado. Quitar cualquier pared la conectará con el exterior. 
+                        </p>
+                        <p>
+                            /\..
+                        </p>
+                            \.\.
+                        <p>
+                            .\/\
+                        </p>
+                        <p>
+                            ..\/
+                        </p>
+                        <p>
+                            Este laberinto tiene dos áreas cerradas. Es necesario quitar dos paredes para conectar todos los cuadrados con el exterior. 
+                        </p>

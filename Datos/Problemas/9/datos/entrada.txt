@@ -1,0 +1,2 @@
+<p>La primera l&iacute;nea consiste en un n&uacute;mero entero positivo T (1 &le; T &le; 20000), el n&uacute;mero de casos de prueba. Luego, T lineas, las cuales tienen dos n&uacute;meros enteros positivos separados por un espacio P y E, (1 &le; E &le; P &le; 200).</p>
+

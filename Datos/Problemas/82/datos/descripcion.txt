@@ -1,0 +1,2 @@
+<p>Juanito quiere saber los numeros descendidos de un numero dado por Pedro.</p>
+

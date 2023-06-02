@@ -1,0 +1,4 @@
+<p>
+                            Para cada caso de prueba, la salida debe contener una sola línea con cuatro números enteros no negativos,
+                            separados por un solo espacio los cuales representan respectivamente |A − B| |A ∩ B| |B − A| |A ∪ B|.
+                        </p>

@@ -1,0 +1,10 @@
+Exception in thread "main" java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at AInfinito.main(AInfinito.java:9)
+
+real	0m0,094s
+user	0m0,117s
+sys	0m0,009s

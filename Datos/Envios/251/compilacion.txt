@@ -1,0 +1,4 @@
+../Datos/Envios/251/AInfinito.java:3: error: class Ainfinito is public, should be declared in a file named Ainfinito.java
+public class Ainfinito {
+       ^
+1 error

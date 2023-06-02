@@ -1,0 +1,1 @@
+<p>Imprima los números en el orden PJ-G-E-D-Pts. Suponga que habrá exactamente una respuesta válida.</p>

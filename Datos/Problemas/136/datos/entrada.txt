@@ -1,0 +1,1 @@
+<p>Solo hay una línea de entrada, contiene una cadena de letras minúsculas solamente. La cadena contendrá de 1 a 60<br>letras (inclusive).</p>

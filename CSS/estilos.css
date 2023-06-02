@@ -1,0 +1,1932 @@
+* {
+    box-sizing: border-box;
+    font-family: var(--bs-font-sans-serif);
+    /*font-family: 'Helvetica', 'Arial', sans-serif;*/
+}
+
+.bodyPrincipal {
+    background-color: #f8f9fc;
+    min-height: 100vh;
+}
+
+.fondo-menu{
+    background-color: #444444 !important;
+}
+
+.sombraTable {
+    /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.sombra-notificacion {
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.menuPrincipal{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+}
+
+.menu-izquierda {
+    width: 240px;
+}
+
+.menu-izquierda  img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.menu-derecha {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: end;
+}
+
+.inicio-registro {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.inicio-registro a {
+    color: black;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.submenu-derecha {
+    display: flex;
+    position: relative;
+    height: 40px;
+}
+
+.menu-botones {
+    cursor: pointer;
+    z-index: 10;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.animation {
+	position: absolute;
+	height: 3px;
+	bottom: 0;
+	z-index: 9;
+	transition: all .3s ease 0s;
+    border-radius: 5px;
+    background: black;
+}
+
+.menu-botones:nth-child(1) {
+    width: 60px;
+    height: 100%;
+    padding: 8px;
+}
+.menu-botones:nth-child(2) {
+    width: 100px;
+    height: 100%;
+    padding: 8px;
+}
+.menu-botones:nth-child(3) {
+    width: 80px;
+    height: 100%;
+    padding: 8px;
+}
+
+.start-inicio, .menu-botones:nth-child(1):hover~.animation {
+	width: 60px;
+	left: 0px;
+}
+.start-informacion, .menu-botones:nth-child(2):hover~.animation {
+	width: 100px;
+	left: 60px;
+}
+.start-torneos, .menu-botones:nth-child(3):hover~.animation {
+	width: 80px;
+	left: 160px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.seccion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: calc(100vh - (72px + 78.5px));
+    padding: 0 1rem;
+    z-index: 8;
+    align-items: center;
+}
+
+.filtroTorneo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.contenido {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 10px;
+    border-top: solid 1px #b0b0b0;
+    border-right: solid 1px #b0b0b0;
+    border-bottom: solid 1px #b0b0b0;
+    border-left: solid 5px #b0b0b0;
+    border-radius: 5px;
+}
+
+.registro-datos {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.registro-datos input{
+    background: none;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 35px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid  #c6c6c6;
+    z-index: 1;
+}
+
+.registro-datos label{
+    color: #c6c6c6;
+    font-size: 16px;
+    position: absolute;
+    top: 13px;
+    left: 35px;
+    transition: 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.etiquetaRegistro {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 10px;
+    left: 5px;
+    pointer-events: none;
+}
+
+.respuestaRegistro {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 10px;
+    right: 5px;
+    pointer-events: none;
+}
+
+.registro-datos input:focus~label{
+    color: #5e5d5d;
+    font-size: 12px;
+    top: -14px;
+    left: 10px;
+}
+
+.registro-datos input:focus {
+    outline: none;
+    color: #5e5d5d;
+    border-bottom: 1px solid  black;
+}
+
+.registro-datos input:invalid {
+    outline: none;
+    box-shadow: none !important;
+}
+
+.registro {
+    width: 100%;
+}
+
+.registro-datos div{
+    position: absolute;
+    width: 100%;
+    background: #6e6d6d;
+    padding: 16px 5px 5px 5px;
+    margin: 2px;
+    opacity: 0;
+    visibility: hidden;
+    clip-path: polygon(10px 10px, 15px 0, 20px 10px, 100% 10px, 100% 40px, 0 40px, 0 10px);
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.registro-datos div p{
+    color: white;
+    font-size: 14px;
+}
+
+.registro-datos div img{
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.registro-datos div img:hover{
+    background: #9c9c9c;
+}
+
+.seccion-registro {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-registro h2 {
+    padding: 15px;
+}
+
+.botonGeneral {
+    width: 180px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #525a54;
+    color: white;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botonGeneral:hover {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+
+.cartel-respuesta {
+    position: absolute;
+    background: #525a54;
+    bottom: 20px;
+    left: 20px;
+    padding: 20px;
+    align-items: center;
+    border-radius: 3px;
+    color: white;
+    position: fixed;
+    z-index: 20;
+}
+
+.cartel-cerrado {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cartel-respuesta img{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.perfilEstilo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.perfilyUsuario {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.marcoEstilo {
+    z-index: 0;
+    background: transparent;
+}
+
+.perfilUsuario {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    z-index: 1;
+}
+
+
+.datosPrincipales {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.datosPrincipalesDatos{
+    display: flex;
+    flex-direction: column;
+}
+
+.lineaEstilo {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.subdatosEstilos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.puntosPerfil {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.tituloPerfil {
+    font-size: 30px;
+    padding: 10px;
+    text-align: right;
+}
+
+.datosExtrasPerfil {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    justify-content: space-between;
+}
+
+.inputDatosPerfil {
+    position: absolute;
+    border: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-left: 30px;
+    padding-right: 35px;
+    text-align: right;
+    background: transparent;
+    font-size: 18px;
+}
+
+.etiquetaPerfil {
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 25px;
+    height: 25px;
+}
+
+.editPerfil {
+    position: absolute;
+    top: 2.5px;
+    right: 2.5px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.datosExtraPerfilFilas {
+    display: flex;
+    align-items: center;
+}
+
+.datosExtraPerfilFilas p{
+    margin: 3px;
+}
+
+.imagenPerfilEdit {
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.textoPerfil {
+    text-align: left;
+    font-size: 20px;
+}
+
+
+.tituloEditCarteles{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+.modificarPerfilForm {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.styletexto {
+    text-align: center;
+    padding: 10px;
+}
+
+.flechaAbajo {
+    width: 30px;
+    height: 30px;
+}
+
+.centrarDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.inputClave {
+    background: none;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid  #c6c6c6;
+    text-align: center;
+    color: black;
+    z-index: 1;
+}
+
+
+.upload {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.subirFoto {
+    position: absolute;
+    background-attachment: #525a54;
+    border: solid black 1px;
+    width: 60%;
+    position: relative;
+}
+
+.etiquetaFotoPerfil {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 25px;
+    height: 25px;
+    pointer-events: none;
+}
+
+.pFotoPerfil {
+    position: absolute;
+    top: 7px;
+    left: 30%;
+    pointer-events: none;
+}
+
+.modificarFoto {
+    width: 80%;
+    max-height: 50px;
+}
+
+.respuestaJuezTabla{
+    width: 100%;
+    padding: 40px 10px 10px 10px;
+}
+
+.centrarTexto {
+    text-align: center;
+}
+
+.tabla {
+    width: 100%;
+}
+
+.tituloTabla1 {
+    display: flex;
+    background: #696b78;
+    color: white;
+    padding: 10px 0 10px 3px;
+    font-size: 20px;
+}
+
+.contenidoTabla {
+    display: flex;
+    padding: 10px 3px 10px 3px;
+    border-bottom: #696b78 solid 1.5px;
+    font-size: 14px;
+}
+.column-90 {
+    width: 90%;
+}
+.column-10 {
+    width: 10%;
+}
+.column-20 {
+    width: 20%;
+}
+.column-30 {
+    width: 30%;
+}
+.column-50 {
+    width: 50%;
+}
+.column-40 {
+    width: 40%;
+}
+.column-100 {
+    width: 100%;
+}
+.column-25 {
+    width: 25%;
+}
+.column-6 {
+    width: 6%;
+}
+.column-5 {
+    width: 5%;
+}
+.column-4 {
+    width: 4%;
+}
+.column-3 {
+    width: 3%;
+}
+.column-12 {
+    width: 12%;
+}
+.column-15 {
+    width: 15%;
+}
+
+.leftTexto {
+    text-align: left;
+}
+
+.rightTexto {
+    text-align: right;
+}
+
+.torneoTablas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tablaTorneo {
+    position: relative;
+    width: 90%;
+    border: solid #8a8995 1px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.tituloTablaTorneo {
+    display: flex;
+    width: 100%;
+    padding: 10px 3px 10px 3px;
+    color: white;
+    /*background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);*/
+    background: #5e5d5d;
+    text-align: center;
+}
+
+.subTituloTablaTorneo {
+    display: flex;
+    padding: 8px 3px 8px 3px;
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #5e5d5d;
+    text-align: center;
+}
+
+.contenidoTablaTorneo {
+    display: flex;
+    padding: 8px 3px 8px 3px;
+    width: 100%;
+    position: relative;
+    background: white;
+    font-size: 13px;
+    align-items: center;
+    text-align: center;
+}
+
+.contenidoTablaTorneo:nth-child(2n-1) {
+    background: #f0f0f0;
+}
+
+.alturaMaxima {
+    height: 100%;
+}
+
+.datosTorneo {
+    display: flex;
+    flex-direction: row;
+}
+
+.datosTorneo p{
+    margin: 3px;
+}
+
+.subMenuTorneo {
+    width: 100%;
+}
+
+.torneoSeccion {
+    width: 100%;
+    position: relative;
+}
+
+.espacioOpcion {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.hojasTorneo {
+    width: 95%;
+    background: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.cabezeraSuperiorProblema{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
+
+.logoProblema{
+    width: 400px;
+    height: 120px;
+}
+
+.logoProblema img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.datoTituloProblema{
+    text-align: right;
+    margin: 10px 20px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.datoTituloProblema p{
+    margin: 10px 0 10px 0;
+}
+
+.cabezera-Titulo {
+    padding: 10px;
+    text-align: justify;
+}
+
+.cuerpoProblema{
+    padding: 10px;
+    text-align: justify;
+}
+
+.entrada {
+    padding: 10px;
+    text-align: justify;
+}
+
+.salida{
+    padding: 10px;
+    text-align: justify;
+}
+
+.casosEjemplos{
+    padding: 10px;
+    text-align: justify;
+}
+
+.cajaTest {
+    padding: 5px;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.titultoTest {
+    border-bottom: solid black 1px;
+}
+
+.texto30px {
+    font-size: 30px;
+}
+
+.cuerpoProblema p{
+    margin-top: 5px;
+}
+
+.entrada p{
+    margin-top: 5px;
+}
+
+.salida p{
+    margin-top: 5px;
+}
+
+.invisible {
+    visibility: hidden;
+    opacity: 0;
+    background: none;
+    pointer-events: none;
+}
+
+.cajaEnvio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.cajaInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px 10px 0px;
+}
+
+.tablaEnvio {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.tituloEnvioTorneo {
+    width: 100%;
+    padding: 10px 3px 10px 3px;
+    background: #525a54;
+    color: white;
+    position: relative;
+}
+
+.subTituloEnvioTorneo {
+    position: relative;
+    width: 100%;
+    border-bottom: 2px solid #525a54;
+    display: flex;
+    padding: 8px 3px 8px 3px;
+}
+
+.contenidoEnvioTorneo {
+    position: relative;
+    width: 100%;
+    border-bottom: 0.5px solid black;
+    display: flex;
+    padding: 8px 3px 8px 3px;
+}
+
+.responsiveFyH  {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tableroPrincipal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+}
+
+.scrollTablero{
+    width: 100%;
+    overflow: scroll;
+}
+
+.tituloTablero {
+    display: flex;
+    width: 100%;
+    padding: 10px 3px 10px 3px;
+    background: #525a54;
+    color: white;
+}
+
+.subtitulosTablero {
+    display: flex;
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #5e5d5d;
+    padding: 6px 3px 6px 3px;
+    justify-content: space-between;
+}
+
+.cartelPhp {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0, 0.5);
+    z-index: 100;
+    position: fixed;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.mensajePhp {
+    width: 60%;
+    height: 80%;
+    background: white;
+    position: absolute;
+}
+
+.cartelLogeo {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: rgba(0,0,0, 0.5);
+    z-index: 100;
+    position: fixed;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.logueo {
+    left: 30%;
+    top: 10%;
+    width: 40%;
+    height: 120px;
+    background: white;
+    position: absolute;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+    border: solid black 2px;
+}
+
+.logueo p{
+    font-size: 16px;
+    top: 30px;
+    position: absolute;
+}
+
+.logueo div {
+    position: absolute;
+    top: 60px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 30px 10px 30px;
+    background: #525a54;
+    color: white;
+}
+
+.cajasEnvio {
+    margin: 20px 0px 20px 0px;
+}
+
+.botonEnvio  input{
+    width: 200px;
+    border: none;
+    text-decoration: none;
+    background: #525a54;
+    color: white;
+    cursor: pointer;
+    padding: 10px 0px 10px 0px;
+}
+
+.botonEnvio  input:hover{
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.bloqueFiltro {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 5px;
+    color: #525a54;
+}
+
+.bloqueFiltroEnvio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px;
+    color: #525a54;
+}
+.imagenTablaEnvios {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 1;
+    background: white;
+    border-radius: 50%;
+}
+
+.contenidoTablero {
+    display: flex;
+    padding: 8px 3px 8px 3px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #5e5d5d;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imagen15x15 {
+    width: 20px;
+    height: 20px;
+}
+
+.imagen20x20 {
+    width: 20px;
+    height: 20px;
+}
+
+.centrarObjetos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.mostrarIntentos {
+    padding-left: 13px;
+    font-size: 8px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.columna {
+    width: 0%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+.subMenuOpciones {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.imagenReloj {
+    width: 25px;
+    height: 25px;
+    margin: 3px;
+}
+
+.tiempoRestante{
+    display: flex;
+    justify-content: row;
+}
+
+
+.boton-envio-fila {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boton-envio-fila input {
+    width: 40%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #525a54;
+    color: white;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-envio-fila input:hover{
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.columnaAncho {
+    width: 25px;
+}
+
+.column30PX {
+    width: 30px;
+}
+
+.column300PX {
+    width: 300px;
+}
+
+.column200PX {
+    width: 200px;
+}
+
+.column100PX {
+    width: 100px;
+}
+
+.filt {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    color: #525a54;
+    margin: 2px 5px 2px 5px;
+}
+
+.filt input{
+    border:1px solid #d9d9d9;
+    height: 30px;
+    padding-left: 5px;
+}
+
+.filtrarDatosTorneo {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selectEstilo3 {	
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 280px;
+    position:relative;
+}
+
+.selectEditPaisPerfil{
+    border:1px solid #d9d9d9;
+    height:30px;
+    width: 400px;
+    margin-top: 5px;
+}
+
+.selectEstilo2 {	
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 100px;
+    position:relative;
+}
+
+.selectEstilo1 {	
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 50px;
+    margin-top: 20px;
+}
+
+.imagenFlechas{
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.filtroIzquierdoTorneo{
+    display: flex;
+    flex-direction: row;
+}
+
+.listaTorneoTabla {
+    display: flex;
+    flex-direction: row;
+}
+
+.columnaPregunta {
+    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.cajaPregunta {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: #eeeeee;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 15px;
+}
+
+.problemaEnviosLista {
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.fileEnvio{
+    margin: 10px;
+    width: 300px;
+    display: none;
+}
+
+.estiloEnvioFile {
+    display: inline-block;
+    width: 400px;
+    height: 40px;
+    background: #eeeeee;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.estiloEnvioFile:hover {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.imagenEstiloEnvio{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.formularioCajaEnvio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textoEstiloFileEnvio{
+    text-align: center;
+    margin-top: 6px;
+}
+
+.cajaEnvioFileTexto{
+    position: absolute;
+    background: white;
+    border-radius: 3px;
+    width: 350px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+}
+
+.filtroPreguntaSelectProblema{
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 200px;
+    position:relative;
+}
+
+.filtroPreguntaSelectNumero {
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 70px;
+    position:relative;
+}
+
+.filtroPreguntaSelectNumeroIndice {
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 40px;
+    position:relative;
+}
+
+.listaMisPreguntas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.imagenFlechasPreguntas {
+    width: 30px;
+    height: 30px;
+}
+
+.filtroPreguntas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #525a54;
+}
+
+.filtroPreguntas label {
+    margin: 0px 8px 0px 8px;
+}
+
+.filDerechoPregunta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tituloPregunta {
+    margin: 7px 8px 3px 8px;
+}
+
+.preguntasEstilo {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 3px 3px 3px;
+}
+
+.preguntaUsuario {
+    border:1px solid #d9d9d9;
+    margin: 5px 5px 5px 5px;
+    resize: vertical;
+}
+
+
+.preguntaEnviar {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 3px 5px 3px;
+}
+
+.datosPreguntas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.selectTemaPregunta {
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 150px;
+    position:relative;
+}
+
+.datosDePreguntas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #525a54;
+    margin: 0px 7px 0px 7px;
+}
+
+.respuestaVaciaPregunta {
+    color: #525a54;
+    text-align: center;
+    margin: 5px;
+}
+
+.selectFiltroEnvio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selectFiltroEnvioIndice {
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 40px;
+}
+
+.selectFiltroEnvioCantidad {
+    border:1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 60px;
+}
+
+.selectFiltroEnvioProblema {
+    border:1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 80px;
+}
+
+.filtroIzquierdaEnvio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.selectFiltroEnvioIndiceCentrar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.estiloTiempoRestante {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+    font-size: 40px;
+    color: #d9d9d9;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+}
+
+.filtroTorneoFila {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 0 0;
+}
+
+.selectFiltroTorneoFilas{
+    border:1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 50px;
+}
+
+.selectFiltroTorneoTop {
+    border:1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 60px;
+    margin-left: 10px;
+}
+
+.inputFiltroTorneoNombre {
+    border:1px solid #d9d9d9;
+    height: 30px;
+    width: 150px;
+}
+
+.selectFiltroTorneoEstado {
+    border:1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 120px;
+}
+
+.inputFiltroTorneoDate {
+    border:1px solid #d9d9d9;
+    height: 30px;
+    width: 110px;
+}
+
+.celdaFechaTorneo{
+    display: flex;
+    flex-direction: column;
+}
+
+.celdaFechaTorneo p{
+    font-size: 12px;
+    text-align: center;
+}
+
+.colorGris {
+    color: #525a54;
+}
+
+.imagenPerfil {
+    width: 25px;
+    height: 25px;
+    margin: 3px;
+}
+
+
+.contenido-perfil {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.contenido-perfil-normal{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.infoContenido {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0 1rem;
+    justify-content: space-between;
+    position: relative;
+}
+
+.columnaPrimeraInfo{
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+    width: 80%;
+}
+
+.columnaSegundaInfo {
+    display: flex;
+    width: 20%;
+    min-width: 230px;
+    max-width: 300px;
+}
+
+.indiceInfo {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 5rem);
+    overflow-y: auto;
+}
+
+.indiceInfoResponsivo{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.indiceResponsivo {
+    display: none;
+}
+
+.cajaLinkInfo{
+    text-decoration: none;
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    padding: 5px 5px 5px 10px;
+}
+
+.cajaLinkInfo:hover{
+    background: #ececec;
+    color: black;
+}
+
+.activoLink {
+    padding: 5px;
+    border-left: #525a54 solid 5px;
+    background: #ececec;
+}
+
+.estrellaTablaTorneo {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 13px;
+    height: 13px;
+}
+
+.maxWidthTabla {
+    max-width: 1300px;
+}
+
+.borderEspecialTabla{
+    border-bottom: 3px black solid;
+}
+
+.imagenMasTorneo {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+
+.filtrosTorneo {
+    float: right;
+}
+
+.contenido-filtro-torneo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.imagenInputDentroDerecha{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.sub-footer-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.datosProblemasTorneo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filaDomDatatable {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lineaProblemaTitulo {
+    border: solid 1px black;
+}
+
+.footerEnvio {
+    position: sticky;
+    bottom: 0;
+}
+
+.contenidoPregunta {
+    display: inline-block;
+    width: 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.colorRowPregunta{
+    background: #f7f7f7 !important;
+}
+
+.colorAceptado {
+    background: #e4ffd2;
+}
+
+.colorError {
+    background: #ffe7e7;
+}
+
+.barra-progreso {
+    transition: all 0.5s ease-in-out;
+}
+
+.configuracion-datos-torneo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.columna-problemas-editor {
+    max-width: 250px;
+    width: 250px;
+    min-width: 250px;
+    transition: all ease-in-out 0.5s;
+}
+
+.cargarProblema::after {
+    content: attr(problema);
+    transition: all 0.5 ease-in-out;
+}
+
+.cargandoProblema::before {
+    content: attr(problema);
+}
+
+.inputResponsivo {
+    max-width: 400px !important;
+    min-width: none;
+}
+
+.contenedor-problemas {
+    width: 100%;
+    padding-top: 10px !important;
+    position: sticky;
+    top: 78.5px;
+}
+.boton-crear-problema::after{
+    content: "Crear Problema";
+}
+
+.contenedor-header-editar-problema {
+    display: flex;
+    padding-top: 10px !important;
+    flex-direction: column;
+    width: 100%;
+    position: sticky;
+    top: 78.5px;
+    background: white;
+    z-index: 8;
+}
+
+.text-cargando-problemas::after {
+    content: "Cargando problemas...";
+}
+
+.cargando-problemas-columna {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.columna-dato-1-torneo {
+    margin-right: 1rem !important;
+}
+
+.caja-tablas-casos-de-prueba {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.boton-casos-prueba {
+    margin: 0 5px 5px 0;
+    transition: all 0.5s all ease-in-out;
+}
+
+.boton-casos-prueba::before{
+    transition: all 0.5s all ease-in-out;
+    content: attr(titulo);
+}
+
+.botones-casos-de-prueba {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.titulo-botones-problemas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.botonProblema{
+    transition: all 0.5 ease-in-out;
+}
+
+.botonProblema::before {
+    content: attr(titulo);
+}
+
+.contenedor-de-notificacion {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 10000000;
+}
+
+.hoja-problema {
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 20px 15px 15px 15px;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.titulo-problema {
+    margin: 0;
+    font-size: 30px;
+}
+
+.letra-problema {
+    margin: 0;
+    font-size: 20px;
+}
+
+.sub-titulo-problema {
+    font-size: 20px;
+}
+
+.texto-legible {
+    color: #474747;
+}
+
+.borde-arriba {
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.contenido-v2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 78.5px);
+    position: relative;
+    padding: 0 10px;
+}
+
+.contenido-titulo {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.imagen-inicio {
+    width: 100px;
+}
+
+
+.titulo-inicio {
+    font-size: 50px;
+}
+
+.parrafo-inicio {
+    font-size: 20px;
+}
+
+.contenido-texto-inicio {
+    width: 100%;
+}
+
+.color-oscuro {
+    background-color: #444444;
+}
+
+.tablaRespuestas {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-size: 13px;
+}
+
+.estadisticaCirucloRespuesta {
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+}
+
+.top-datatable-custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top-datatable-custom > div {
+    margin: 5px;
+}
+
+.transicion-modal {
+    transition: all 1s ease-in-out;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 630px){
+    .boton-casos-prueba {
+        margin: 0 0 5px 0;
+    }
+    .botones-casos-de-prueba {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .filaDomDatatable{
+        flex-direction: column-reverse;
+    }
+    .columna-problemas-editor {
+        width: 42px;
+        min-width: 42px;
+    }
+    .cargarProblema::after {
+        content: "";
+    }
+    .cargandoProblema::before {
+        content: "";
+    }
+    .boton-crear-problema::after{
+        content: "+";
+        font-weight: 300;
+        font-size: 18px;
+    }
+
+    .text-cargando-problemas::after {
+        content: "";
+    }
+
+    .cargando-problemas-columna {
+        justify-content: center;
+    }
+
+    .botonProblema::before {
+        content: "";
+    }
+}
+
+@media screen and (max-width: 768px){
+    .menuPrincipal{
+        width: 100%;
+        padding: 0;
+    }
+    .columnaPrimeraInfo{
+        width: 100%;
+    }
+    .columnaSegundaInfo{
+        display: none;
+    }
+    .indiceResponsivo{
+        display: block;
+    }
+    .perfilyUsuario {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .marcoEstilo{
+        margin: 0 auto;
+    }
+
+    .sub-footer-principal{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .bodyPrincipal{
+        padding: 0 !important;
+    }
+    .configuracion-datos-torneo {
+        flex-direction: column;
+    }
+
+    .columna-dato-1-torneo {
+        margin-right: 0 !important;
+    }
+    .titulo-inicio {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .parrafo-inicio {
+        font-size: 1rem;
+    }
+
+    .tablaRespuestas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-datatable-custom {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .caja-tablas-casos-de-prueba {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .contenido-titulo {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-items: center;
+        align-items: center;
+    }
+    .titulo-inicio {
+        text-align: center;
+    }
+}
+

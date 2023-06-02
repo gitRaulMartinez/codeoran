@@ -1,0 +1,2 @@
+<p>Dado dos numeros naturales <strong>A </strong>y <strong>B </strong>estos dos valores son enteros</p>
+

@@ -1,0 +1,4 @@
+../Datos/Envios/187/TADarticulo.c:3:10: fatal error: TADarticulo.h: No existe el archivo o el directorio
+ #include "TADarticulo.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.

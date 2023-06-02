@@ -1,0 +1,4 @@
+<p>
+                            Genere en una sola línea un número entero que indique cuántas paredes deben eliminarse para que sea posible escapar
+                            de cada cuadrado del laberinto. 
+                        </p>

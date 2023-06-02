@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "../Datos/Envios/182/ejemplo.py", line 5, in <module>
+    if(x[i]%2) == 0:
+IndexError: list index out of range
+
+real	0m0,052s
+user	0m0,039s
+sys	0m0,012s

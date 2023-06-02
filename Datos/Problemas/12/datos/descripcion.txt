@@ -1,0 +1,31 @@
+<p>
+                            La ultima Copa del Mundo se celebró en Rusia. Algunos grandes países del fútbol (por ejemplo, Italia, Holanda, Chile, EE. UU.) No se clasificaron para esta Copa del Mundo. Estos países han descubierto que necesitaban más
+                            pases efectivos.
+                        </p>
+                        <p>
+                            Dadas las posiciones de los jugadores para dos equipos, determine el número mínimo de pases necesarios para pasar el balón de un jugador a otro. A los efectos de este problema, los jugadores no cambian de posición, es decir, no se mueven.
+                        </p>
+                        <p>
+                            El jugador P<SUB>1</SUB> puede pasar el balón directamente a P<SUB>2</SUB> si están en el mismo equipo y no hay otro jugador entre los dos jugadores.
+                        </p>
+                        <p>
+                            Asumimos:
+                        </p>
+                        <p>
+                            &#9679;  P<SUB>1</SUB> y P<SUB>2</SUB> están en el mismo equipo
+                        </p>
+                        <p>
+                            &#9679;  P<SUB>1</SUB>, P<SUB>2</SUB>, P<SUB>3</SUB> forman una línea con P<SUB>3</SUB> entre P<SUB>1</SUB> y P<SUB>2</SUB>
+                        </p>
+                        <p>
+                            &#9679; No hay otros jugadores en la línea formada por P<SUB>1</SUB>, P<SUB>2</SUB>, P<SUB>3</SUB>
+                        </p>
+                        <p>
+                            Entonces:
+                        </p>
+                        <p>
+                            &#9679; Si P<SUB>3</SUB> está en el otro equipo, P<SUB>1</SUB> no puede pasar el balón directamente a P<SUB>2</SUB>.
+                        </p>
+                        <p>
+                            &#9679; Si P<SUB>3</SUB> está en el mismo equipo, P<SUB>1</SUB> puede pasar el balón a P<SUB>3</SUB> para pasarlo a P 2.
+                        </p>

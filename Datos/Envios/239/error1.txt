@@ -1,0 +1,6 @@
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at B.main(B.java:13)
+
+real	0m0,083s
+user	0m0,098s
+sys	0m0,009s

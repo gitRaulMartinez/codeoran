@@ -1,0 +1,4 @@
+<p>El Straw Hat Pirates son una tripulaci&oacute;n muy talentosa que viajan por los mares. Constan de su capit&aacute;n y otros 9 miembros. Ellos fueron invitados a una boda por un famoso pirata que tiene muchos hijos y aman comer tortas (o &ldquo;queque&rdquo; en algunos pa&iacute;ses).</p>
+
+<p>La tripulaci&oacute;n acaba de llegar a la fiesta. Al inicio de la fiesta hab&iacute;an <em><b>P</b></em> porciones de torta. Cada miembro de la tripulaci&oacute;n desean exactamente una porcion de torta. Sin embargo, algunas personas en la fiesta ya han comido <em><b>E</b></em> porciones.</p>
+

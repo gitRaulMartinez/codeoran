@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Oran</title>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <!-- Estilos CSS Enlaces -->
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/animate.min.css">
+    <link rel="stylesheet" href="../Frameworks/Bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../Frameworks/Bootstrap-icons/bootstrap-icons.css"></link>
+    <!-- JavaScripts Enlaces -->
+    <script src="../JS/jquery-3.5.1.min.js"> </script>
+    <script src="../JS/main.js" language="javascript" type="text/javascript"></script>
+    <script src="../JS/info.js" language="javascript" type="text/javascript"></script>
+    <script src="../JS/funciones.js" language="javascript" type="text/javascript"></script>
+    <script src="../Frameworks/Bootstrap/js/bootstrap.min.js" type="text/javascript" ></script>
+</head>
+<body class="bodyPrincipal container-xxl">
+    <header class="menuPrincipal">
+        <nav class="navbar navbar-expand-md navbar-dark fondo-menu sombraTable">      
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <div style="display: flex;">
+                        <img src="../Imagenes/dom.png" width="50" height="50">
+                        <div style="display: flex; flex-direction: column; margin-left: 10px;">
+                            <span style="color: yellow; font-weight: bold; font-size: 15px;">CodeOrán</span>
+                            <span style="font-size: 10px;">PROGRAMACIÓN</span>
+                            <span style="font-size: 10px;">COMPETITIVA</span>
+                        </div>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content: space-between;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="info.html">Información</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="torneos.html">Torneos</a>
+                        </li>
+                        <li class="nav-item indiceResponsivo">
+                            <a class="nav-link" href="#indice" data-bs-toggle="offcanvas" data-bs-target="#offcanvasIndice" aria-controls="offcanvasWithBothOptions">Indicé</a>
+                        </li>
+                    </ul>
+                    <div style="display: flex; flex-direction: row; align-items: center; justify-content: end;" id="inicioSessionCaja">
+                    </div>
+                </div> 
+            </div>
+        </nav>
+    </header>
+    <main class="infoContenido">
+        <div class="columnaPrimeraInfo">
+            <div class="contenido-perfil-normal">
+                <h4> Información Code Oran </h4>
+                <p>Esta guia sirve para orientar al usuario sobre la pagina y su funcionamiento.</p>
+            </div>
+            <div class="contenido-perfil" >
+                <h4 id="comoRegistrarme" data-anchor="comoRegistrarme">¿Como me registro?</h4>
+                <p>En la parte superior derecha de la pagina encontraran un link con el nombre <b>Registrarse</b>, al hacer click mostrara una ventana en el cual debera completar los siguientes 5 campos</p>
+                <ol>
+                    <li><b>Usuario</b></li>
+                    <li><b>Contraseña</b></li>
+                    <li><b>Repetir contraseña</b></li>
+                    <li><b>Email</b></li>
+                    <li><b>Pais</b></li>
+                </ol>
+                <br>
+                <p><b>Usuario:</b>El usuario es único, y no se podrá volver a cambiar, solo se permiten letras y números.</p>
+                <p><b>Contraseña:</b>La contraseña debe tener como mínimo 6 caracteres y como máximo 20 caracteres, se permite cualquier carácter.</p>
+                <p><b>Repetir contraseña:</b> Deberá volver a colocar su contraseña, esto se realiza para verificar que la contraseña que coloco y no se equivoque con algún carácter. </p>
+                <p><b>Email:</b>  El email es único también, pero se puede cambiar por otro en mi perfil, recuerde que el email es importante, ya que te servirá para recuperar la contraseña, activar la cuenta, y otras funciones, así que por favor verifique que el email ingresado sea suyo y que pueda recibir correos de la página.</p>
+                <p><b>Pais:</b>  Seleccione su país de residencia</p>
+                <p>Una vez completado todos los campos correctamente, se completará su registro y deberá activar la cuenta.</p>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="activarCuenta" data-anchor="activarCuenta"> Activar cuenta </h4>
+                <p>
+                    Para activar la cuenta deberá dirigirse a la parte superior derecha de la pagina web haciendo click en <b>Activar la cuenta</b>. Luego se mostrara una ventana en el cual debera colocar el codigo que fue enviado a su correo con el cual se registro.
+                    Una vez colocado presione confirmar y su cuenta estara activada, si no le llego ningun correo puede enviarlo de nuevo.
+                </p>     
+            </div>
+            <div class="contenido-perfil" >
+                <h4 id="recuperarContra" data-anchor="recuperarContra"> Recuperar contraseña </h4>
+                <p>Al abrir la ventana iniciar sesión podra encontrar un link llamado Recuperar contraseña debe hacer clic y se abrirá una ventana donde debera completar los siguiente pasos.</p> 
+                <ol>
+                    <li>El primero le pedirá su usuario con el cual se haya registrado.</li>
+                    <li>Recibirá en el correo asociado con el usuario un mensaje con un código, este código enviado deberá copiarlo y pegarlo en el siguiente campo de texto.</li>
+                    <li>Una vez completado los dos pasos anteriores, deberá llenar los dos campos con su contraseña nueva.</li>
+                </ol>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="#miPerfil" data-anchor="miPerfil"> Mi perfil </h4>
+                <p>Cuando se haya registrado e ingresado a su cuenta, el nombre de su usuario aparecerá arriba a la derecha, haciendo clic se desplegara dos opciones <em>Mi perfil</em> y <em>Cerrar Sesión</em>. Ingresando a mi perfil podrá ver los datos público de su cuenta.</p>
+                <p>Datos públicos</p>
+                <ul>
+                    <li>Imagen de perfil</li>
+                    <li>País</li>
+                    <li>Email</li>
+                    <li>Fecha y hora cuando se creó la cuenta</li>
+                    <li>Fecha y hora de su última conexión</li>
+                </ul>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="imagenPerfil" data-anchor="imagenPerfil"> Imagen de perfil </h4>
+                <p>Cuando se registra por primera vez la imagen de perfil trae una por defecto, pero pueden modificarla. Debe respetar las siguientes restricciones:</p>
+                <ol style="margin-left: 18px;">
+                    <li>Solo se admiten imagen tipo JPEG PNG y GIF</li>
+                    <li>No debe superar el tamaño de 10 MB</li>
+                </ol>
+                <p>Para poder cambiar debe hacer clic en su imagen de perfil y saldrá una ventana donde podrá subir la imagen, luego se mostrara como quedara su imagen en el perfil, podrá subir otra imagen o confirmar si quiere confirmar el cambio de imagen de perfil.</p>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="cambiarContraPerfil" data-anchor="cambiarContraPerfil"> Cambiar contraseña </h4>
+                <div class="contenido-descripcion">
+                    <p>Poder cambiar la contraseña, deberá seleccionar el símbolo <img src="../Imagenes/edit5.png" style="width: 20px; height: 20px;"> que está del lado derecho de cambiar contraseña. Luego saldrá una ventana para modificar la contraseña.</p>
+                    <ol>
+                        <li>El primero será seleccionar <em>Enviar correo</em> que permitirá enviar un correo a su email asociado con la cuenta.</li>
+                        <li>Luego debe colocar el código enviado y pegarlo en el campo de texto y hacer clic en confirmar.</li>
+                        <li>Una vez realizado los pasos anteriores saldrá dos nuevos campos para ingresar su nueva contraseña.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="correoPerfil" data-anchor="correoPerfil"> Cambiar correo </h4>
+                <p>Poder cambiar el correo, deberá seleccionar el símbolo <img src="../Imagenes/edit5.png" style="width: 20px; height: 20px;"> que está del lado derecho de cambiar contraseña. Luego saldrá una ventana para modificar el correo.</p>
+                <ol>
+                    <li>El primero será seleccionar <em>Enviar correo</em> que permitirá enviar un correo a su email asociado con la cuenta.</li>
+                    <li>Luego debe colocar el código enviado y pegarlo en el campo de texto y hacer clic en confirmar.</li>
+                    <li>Una vez realizado los pasos anteriores saldrá nuevos campos para ingresar su nuevo correo.</li>
+                </ol>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="paisPerfil" data-anchor="paisPerfil"> Cambiar País </h4>
+                <p class="parrafo">Poder cambiar el pais, deberá seleccionar el símbolo <img src="../Imagenes/edit5.png" style="width: 20px; height: 20px;"> que está del lado derecho de cambiar contraseña. Luego saldrá una ventana para modificar el correo.</p>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="torneosPagina" data-anchor="torneosPagina"> Torneos </h4>
+                <p>En la sección torneo contiene una tabla con la lista de torneos disponibles de la página con sus datos:</p>
+                <ul>
+                    <li>Nombre: El nombre del torneo</li>
+                    <li>Fecha: Fecha de inicio del torneo</li>
+                    <li>Hora: Hora de inicio del torneo</li>
+                    <li>Duración: La duración del torneo expresada en horas : minutos : segundos</li>
+                    <li># de problemas: El numero de problemas que contiene el torneo</li>
+                    <li>
+                        Estado: Los torneos poseen 3 estados:
+                        <ul>
+                            <li> Inicia en: <em>Tiempo restante</em>: El torneo todavía no ha comenzado, el tiempo restante representa lo que queda para que de inicio el torneo.</li>
+                            <li> Termina en: <em>Tiempo restante</em>: El torneo ya ha comenzado, el tiempo restante representa lo que queda para que el torneo finalicé. </li>
+                            <li> Finalizado: El torneo ha terminado.</li>
+                        </ul>
+                    </li>
+                    <li> Ingreso: Aquí podrá ingresar al torneo, en el caso que se haya registrado caso contrario deberá registrarse haciendo clic y confirmando el registro.</li>
+                </ul>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="problemasTorneo" data-anchor="problemasTorneo"> Problemas </h4>
+                <div class="contenido-descripcion">
+                    <p>Los problemas de los torneos poseen una estructura básica.</p>
+                    <ul>
+                        <li>Título: El título del problema.</li>
+                        <li>Etiqueta: Una letra asociada al problema.</li>
+                        <li>Descripción: Descripción del problema.</li>
+                        <li>Formato de entrada: Explica como debe ser la entrada estándar.</li>
+                        <li>Formato de salida: Explica como debe ser la salida estándar.</li>
+                        <li>Casos de prueba: Una cantidad finita de casos de prueba que sirven de ejemplos.</li>
+                    </ul>
+                    <p>Los problemas van a tener su descripcion, el formato de entrada y el formato de salida con sus respectivo tests de ejemplos que trae cada uno.</p>
+                </div>   
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="enviosTorneo" data-anchor="enviosTorneo">Envios</h4>
+                <p>Para realizar los envios se debe enviar el codigo fuente en uno de los siguientes lenguajes:</p>
+                <br>
+                <ul>
+                    <li>C (.c) <img src="../Imagenes/c.png" style="width: 25px; height: 25px;"></li>
+                    <li>C++ (.cpp) <img src="../Imagenes/cplus.png" style="width: 25px; height: 25px;"></li>
+                    <li>Java (.java) <img src="../Imagenes/java.png" style="width: 25px; height: 25px;"></li>
+                    <li>Python (.py) <img src="../Imagenes/python.png" style="width: 25px; height: 25px;"></li>
+                </ul>
+                <br>
+                <p>Una vez enviado se cargará en la lista de envíos con los siguientes datos</p>
+                <ul>
+                    <li># Envió: Un número que identifica tu envió.</li>
+                    <li>Letra: La etiqueta del problema.</li>
+                    <li>Problema: El título del problema.</li>
+                    <li>Fecha: La fecha de envió del problema.</li>
+                    <li>Hora: La hora de envió del problema.</li>
+                    <li>Respuesta: La respuesta del juez.</li>
+                </ul>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="respuestaJuezTorneo" data-anchor="respuestaJuezTorneo"> Respuesta del juez </h4>
+                <p>El juez está ubicado en nuestro servidor, es quien responde a los envíos, responderá automáticamente a medida que vayan llegando los envíos. Las posibles respuestas son:</p>
+                <ul>
+                    <li>En espera: El juez todavía está evaluando tu envió.</li>
+                    <li>Compilación Fallida: El archivo enviado no se pudo compilar.</li>
+                    <li>Error en tiempo de Ejecución: Durante la Ejecución del problema hubo errores.</li>
+                    <li>Tiempo Límite Excedido: Ha excedido el tiempo límite del problema.</li>
+                    <li>Respuesta Incorrecta: Una de las respuestas no coincide con la del juez.</li>
+                    <li>Aceptado: La respuesta es correcta, esto quiere decir que coincidió con todas las respuestas del juez</li>
+                </ul>
+            </div>
+            <div class="contenido-perfil">
+                <h4 id="tablaTorneo" data-anchor="tablaTorneo"> Tablero </h4>
+                <p>Aquí se podrá ir viendo en una tabla los avances de cada participante incluyéndote, en forma de ranking, es decir quien está más arriba está ganando el torneo. La tabla incluye los siguientes datos.</p>
+                <ul>
+                    <li>#: Posición del ranking.</li>
+                    <li>Usuario: Nombre del usuario</li>
+                    <li>País: El país del usuario</li>
+                    <li>Lista de problemas: Aquí se muestra los problemas que van resolviendo.
+                        <ul>
+                            <li><img src="../Imagenes/aceptado2.png" class="imagen15x15" style="margin-right: 10px;" > Problema resuelto: El problema fue aceptado por el juez</li>
+                            <li><img src="../Imagenes/incorrecto2.png" class="imagen15x15" style="margin-right: 10px;" > Intento fallido del problema: El problema fue enviado pero la respuesta del juez no fue aceptada</li>
+                        </ul>
+                    </li>
+                    <li># RP: Número de respuestas correctas.
+                        <ul>
+                            <li><em>Si dos o más participantes tiene la misma cantidad de problemas acertados, se define por el tiempo de penalización.</em></li>
+                        </ul>
+                    </li>
+                    <li>Puntos: El la suma del tiempo de penalización de cada problema.
+                        <ul>
+                            <li><em>El tiempo de penalización es el tiempo en minutos desde que el usuario ha realizado el envió correcto, si ha realizado anteriores envíos donde la respuesta no se haya sido correcta se le sumara 20 minutos por cada intento.</em></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contenido-perfil">
+                <h4 id="preguntasTorneo" data-anchor="preguntasTorneo"> Preguntas del torneo </h4>
+                <p>En cada problema puede haber ciertos errores de escritura o errores en los casos de prueba, o algún mal comprendido de ellos, por lo tanto, se le proporciona un sitio de consulta específica para cada torneo donde podrá consultar sobre los problemas durante el torneo.</p> 
+            </div>
+
+            <div class="contenido-perfil-normal">
+                <h4>Guia terminada</h4>
+                <p>Espero que le haya sido útil esta, guia no olvide consultar en la parte de contactos de nuestra página.</p>
+                <p>Saludos</p>
+                <div style="display:flex; flex-direction:row; align-items: center; margin: 0 auto;">
+                    <img src="../Imagenes/dom.png" width="200" height="200">
+                    <div>
+                        <h1>CodeOrán</h1>
+                        <h2>PROGRAMACIÓN</h2>
+                        <h2>COMPETITIVA</h2>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="columnaSegundaInfo">
+            <div class="indiceInfo">
+                <a href="#comoRegistrarme" data-scroll="comoRegistrarme" class="cajaLinkInfo">Registro</a>
+                <a href="#activarCuenta" data-scroll="activarCuenta" class="cajaLinkInfo">Activar Cuenta</a>
+                <a href="#recuperarContra" data-scroll="recuperarContra" class="cajaLinkInfo">Recuperar Contraseña</a>
+                <a href="#miPerfil" data-scroll="miPerfil" class="cajaLinkInfo">Mi perfil</a>
+                <a href="#imagenPerfil" data-scroll="imagenPerfil" class="cajaLinkInfo">Imagen de perfil</a>
+                <a href="#cambiarContraPerfil" data-scroll="cambiarContraPerfil" class="cajaLinkInfo">Cambiar contraseña</a>
+                <a href="#correoPerfil" data-scroll="correoPerfil" class="cajaLinkInfo">Cambiar correo</a>
+                <a href="#paisPerfil" data-scroll="paisPerfil" class="cajaLinkInfo">Cambiar Pais</a>
+                <a href="#torneosPagina" data-scroll="torneosPagina" class="cajaLinkInfo">Torneos</a>
+                <a href="#problemasTorneo" data-scroll="problemasTorneo" class="cajaLinkInfo">Problemas</a>
+                <a href="#enviosTorneo" data-scroll="enviosTorneo" class="cajaLinkInfo">Envios</a>
+                <a href="#respuestaJuezTorneo" data-scroll="respuestaJuezTorneo" class="cajaLinkInfo">Respuestas del juez</a>
+                <a href="#tablaTorneo" data-scroll="tablaTorneo" class="cajaLinkInfo">Tablero</a>
+                <a href="#preguntasTorneo" data-scroll="preguntasTorneo" class="cajaLinkInfo">Preguntas</a>
+            </div>
+        </div>
+        
+        <div class="toast-container contenedor-de-notificacion" id="notificaciones"></div>
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasIndice" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Indicé</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="indiceInfoResponsivo">
+                    <a href="#comoRegistrarme" data-scroll="comoRegistrarme" class="cajaLinkInfo">Registro</a>
+                    <a href="#activarCuenta" data-scroll="activarCuenta" class="cajaLinkInfo">Activar Cuenta</a>
+                    <a href="#recuperarContra" data-scroll="recuperarContra" class="cajaLinkInfo">Recuperar Contraseña</a>
+                    <a href="#miPerfil" data-scroll="miPerfil" class="cajaLinkInfo">Mi perfil</a>
+                    <a href="#imagenPerfil" data-scroll="imagenPerfil" class="cajaLinkInfo">Imagen de perfil</a>
+                    <a href="#cambiarContraPerfil" data-scroll="cambiarContraPerfil" class="cajaLinkInfo">Cambiar contraseña</a>
+                    <a href="#correoPerfil" data-scroll="correoPerfil" class="cajaLinkInfo">Cambiar correo</a>
+                    <a href="#paisPerfil" data-scroll="paisPerfil" class="cajaLinkInfo">Cambiar Pais</a>
+                    <a href="#torneosPagina" data-scroll="torneosPagina" class="cajaLinkInfo">Torneos</a>
+                    <a href="#problemasTorneo" data-scroll="problemasTorneo" class="cajaLinkInfo">Problemas</a>
+                    <a href="#enviosTorneo" data-scroll="enviosTorneo" class="cajaLinkInfo">Envios</a>
+                    <a href="#respuestaJuezTorneo" data-scroll="respuestaJuezTorneo" class="cajaLinkInfo">Respuestas del juez</a>
+                    <a href="#tablaTorneo" data-scroll="tablaTorneo" class="cajaLinkInfo">Tablero</a>
+                    <a href="#preguntasTorneo" data-scroll="preguntasTorneo" class="cajaLinkInfo">Preguntas</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalRegistro"></div>
+        
+        <div id="modalSesion"></div>
+
+        <div id="modalActivacion"></div>
+
+        <div id="modalRecuperarContra"></div>
+    </main>
+
+    <footer class="footer mt-auto fondo-menu sombraTable footerPrincipal p-3">
+        <div class="sub-footer-principal">
+            <div class="d-flex align-content-center py-2">
+                <span class="text-muted">Proyecto Seminario: CodeOrán</span>
+                <img src="../Imagenes/dom.png" alt="20" height="20" class="mx-1">
+              </div>
+              <div class="d-flex align-content-center">
+                  <img src="../Imagenes/escudoUNSa.jpg" alt="" width="40" height="40" style="border-radius: 50% / 50%;" class="mx-1">
+                  <span class="text-muted py-2">Universidad Nacional de Salta - Sedé Orán</span>
+              </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

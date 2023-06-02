@@ -1,0 +1,1 @@
+<p>En la primera linea se ingresa un entero <strong>t</strong> indicando el numero de casos. (0 &lt; t ≤ 1000)</p><p>Las siguientes <strong>t</strong> linea se ingresa dos números enteros <strong>x</strong> e <strong>y</strong>. (0 &lt; x,y ≤ 100000)</p>

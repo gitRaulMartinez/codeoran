@@ -1,0 +1,9 @@
+<p>
+                            Se tienen dos conjuntos de números enteros positivos A y B con |A| = m y |B| = n (recordar que la
+                            cardinalidad de un conjunto es la cantidad de elementos diferentes que contiene, la cardinalidad se indica
+                            con las barras que encierran al conjunto).
+                        </p>
+                        <p>
+                            Se quiere determinar las cardinalidades de los conjuntos que se obtienen como resultado de A − B, A ∩ B,
+                            B − A y A ∪ B.
+                        </p>
