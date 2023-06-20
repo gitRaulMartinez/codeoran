@@ -1,2 +1,0 @@
-<p>Varias lineas indicando el numero descendidos hasta 0.</p>
-

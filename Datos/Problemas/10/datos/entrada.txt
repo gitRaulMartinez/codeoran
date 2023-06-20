@@ -1,5 +1,0 @@
-<p>
-                            La entrada consiste en muchos casos de prueba, uno por línea. Cada caso con dos enteros separados por
-                            un espacio. a (−10<sup>18</sup> ≤ a ≤ 10<sup>18</sup>) y b (0 ≤ b ≤ 10<sup>18</sup>). La entrada se detiene con una línea con a = 0 y
-                            b = 0 que no debe ser contestada.
-                        </p>

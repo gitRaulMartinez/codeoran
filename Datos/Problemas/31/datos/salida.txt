@@ -1,3 +1,0 @@
-<p>La suma de los dos numeros<br />
-&nbsp;</p>
-

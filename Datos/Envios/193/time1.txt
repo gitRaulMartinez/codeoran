@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "../Datos/Envios/193/ejemplo.py", line 1, in <module>
-    n = int(input())
-ValueError: invalid literal for int() with base 10: '1 1'
-
-real	0m0,036s
-user	0m0,030s
-sys	0m0,004s

@@ -1,1 +1,0 @@
-<p>Para cada prueba, imprima YES (sin distinción entre mayúsculas y minúsculas), si puede ordenar el arreglo c en orden no decreciente. De lo contrario, escriba NO (sin distinción entre mayúsculas y minúsculas).</p>

@@ -1,1 +1,0 @@
-<p>Considere una cadena que contiene solo letras minúsculas.&nbsp;</p><p>Llamamos impar a la cadena si cada letra de la cadena aparece un número impar de veces. De manera similar, llamamos a la cadena par si cada letra de la cadena aparece un número par de veces.</p><p>Dada una cadena, determina si es par o impar.</p>

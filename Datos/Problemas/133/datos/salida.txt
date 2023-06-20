@@ -1,1 +1,0 @@
-<p>Para cada caso de prueba, imprima un número entero: el índice de la palabra <strong>s</strong> en el diccionario.</p>

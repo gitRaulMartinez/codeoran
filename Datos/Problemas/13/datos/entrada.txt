@@ -1,3 +1,0 @@
-<p>
-                            La primera línea tiene dos números, R y C, que dan el número de filas y columnas en la descripción de entrada del laberinto. Después de esto, habrá líneas R, cada una con caracteres C, que constan solo de los caracteres "/", "\" y ".". Tanto R como C están en el rango 1. . . 1000.
-                        </p>

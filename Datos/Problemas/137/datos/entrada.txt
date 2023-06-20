@@ -1,1 +1,0 @@
-<p>Solo hay una línea de entrada, contiene dos números no negativos de un solo dígito, al menos uno de los dos números es distinto de cero.</p>

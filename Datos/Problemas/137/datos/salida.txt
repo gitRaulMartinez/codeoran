@@ -1,1 +1,0 @@
-<p>Imprime la longitud de la secuencia cuando se repiten los dos números iniciales.</p>

@@ -1,2 +1,0 @@
-<p>Devolver la multiplicacion de dos numeros</p>
-

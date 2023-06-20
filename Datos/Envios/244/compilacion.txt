@@ -1,7 +1,0 @@
-../Datos/Envios/244/empleado.c: In function ‘main’:
-../Datos/Envios/244/empleado.c:24:59: warning: implicit declaration of function ‘gets’; did you mean ‘fgets’? [-Wimplicit-function-declaration]
-    printf("INGRESA EL NOMBRE DEL EMPLEADO %i : \n", i+1); gets(v[i].nombre);
-                                                           ^~~~
-                                                           fgets
-/tmp/ccD6H3MW.o: En la función `main':
-empleado.c:(.text+0xaf): aviso: the `gets' function is dangerous and should not be used.

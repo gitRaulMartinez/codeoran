@@ -1,4 +1,0 @@
-../Datos/Envios/255/AInfinito.java:20: error: unreachable statement
-            t--; 
-            ^
-1 error

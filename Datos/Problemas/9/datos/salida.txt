@@ -1,2 +1,0 @@
-<p>Para cada caso de prueba, imprima una l&iacute;nea con un &lsquo;YES&rsquo; (sin comillas) si hay suficiente torta para el Straw Hat Pirates o &lsquo;NO&rsquo; (sin comillas) en otro caso.</p>
-

@@ -1,1 +1,0 @@
-<p>Imprime 0 (cero) si la cadena es par, 1 (uno) si la cadena es impar y 0/1 (cero y uno con una barra inclinada en entre) si no es ninguno.</p>

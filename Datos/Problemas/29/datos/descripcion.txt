@@ -1,2 +1,0 @@
-<p>Se le pedira multiplicar dos valores numeros enteros</p>
-

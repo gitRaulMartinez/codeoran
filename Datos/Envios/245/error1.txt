@@ -1,5 +1,0 @@
-timeout: fallo al ejecutar la orden «../Datos/Envios/245/solucion/ejecutable»: No existe el archivo o el directorio
-
-real	0m0,001s
-user	0m0,002s
-sys	0m0,000s

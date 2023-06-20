@@ -1,5 +1,0 @@
-../Bash/ejecutarJava.sh: línea 2: ../Datos/Prolemas/133/in/test1.in: No existe el archivo o el directorio
-
-real	0m0,001s
-user	0m0,001s
-sys	0m0,000s

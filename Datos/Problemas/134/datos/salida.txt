@@ -1,1 +1,0 @@
-<p>Para cada caso de prueba, imprima el número de cadenas diferentes que se pueden obtener después de una cantidad arbitraria de movimientos (incluido cero). Si el número es infinitamente grande, imprima -1. De lo contrario, imprima el número.</p>

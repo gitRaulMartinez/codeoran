@@ -1,5 +1,0 @@
-../Datos/Envios/202/PiezaPastelCompilationError.c: In function ‘main’:
-../Datos/Envios/202/PiezaPastelCompilationError.c:3:13: error: ‘hola’ undeclared (first use in this function)
-     int z = hola;
-             ^~~~
-../Datos/Envios/202/PiezaPastelCompilationError.c:3:13: note: each undeclared identifier is reported only once for each function it appears in

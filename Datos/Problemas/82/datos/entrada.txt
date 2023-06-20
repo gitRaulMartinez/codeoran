@@ -1,2 +1,0 @@
-<p>Un numero <strong>N </strong>natural &lt; 1^9.</p>
-

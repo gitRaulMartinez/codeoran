@@ -1,1 +1,0 @@
-<p>La primera línea contiene un número entero <strong>t</strong> (1≤t≤650) — el número de casos de prueba.</p><p>Cada caso de prueba consta de una línea que contiene <strong>s</strong>, una cadena que consta de exactamente dos letras latinas minúsculas diferentes (es decir, una palabra correcta del idioma Berland).</p>

@@ -1,3 +1,0 @@
-<p>Dado <strong>N </strong>pinguinos en forma de numeros enteros donde cada <strong>P</strong>i ES MAYOR DE 1000<br />
-&nbsp;</p>
-
