@@ -1,0 +1,1082 @@
+
+
+.contenidoDeRegistros {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+}
+
+.tituloAdmCuentas {
+    font-size: 20px;
+    width: 100%;
+    border-bottom: solid #525a54 2px;
+    position: relative;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.subTituloRegistros {
+    font-size: 14px;
+    width: 100%;
+    border-bottom: 1px solid #525a54;
+    display: flex;
+    padding: 3px;
+    font-weight: bolder;
+}
+
+.contenidoCuenta {
+    font-size: 13px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 3px 0 3px;
+}
+
+.contenidoCuenta:nth-child(2n-1){
+    background: #ececec;
+}
+
+.contenidoCuenta:hover {
+    color: white;
+    background: #a4a4a4;
+}
+
+.centrarTexto{
+    text-align: center;
+}
+
+.paddingAltura {
+    margin: 5px 2px 5px 2px;
+}
+
+.imagenFlechas {
+    width: 30px;
+    height: 30px;
+    cursor: none;
+    opacity: 0.2;
+}
+
+.selectEstilo select{	
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 60px;
+    position:relative;
+}
+
+.filasRegistro {
+    position: absolute;
+    top :0;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.selectEstilo2 select{	
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 80px;
+    position:relative;
+}
+
+.selectEstilo3 select{	
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 280px;
+    position:relative;
+}
+.filtroCantidad {
+    font-size: 16px;
+    color: #525a54;
+    padding-right: 5px;
+}
+
+.cartel-cerrado {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cartel-respuesta {
+    position: absolute;
+    background: #525a54;
+    bottom: 20px;
+    left: 20px;
+    padding: 20px;
+    align-items: center;
+    border-radius: 3px;
+    color: white;
+    position: fixed;
+    z-index: 20;
+}
+
+.tituloFiltro {
+    font-size: 20px;
+}
+
+.Filtrado{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px 10px 0;
+}
+
+.filtros {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.filt {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    color: #525a54;
+    margin: 2px 5px 2px 5px;
+}
+
+.filt input{
+    border:1px solid #d9d9d9;
+    height: 30px;
+    padding-left: 5px;
+}
+
+.botonesModificar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    margin-top: 18px;
+    background: transparent;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.creacionTorneoBody {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.creacionBoton {
+    width: 30%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.modalCrearTorneo {
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    position: fixed;
+}
+
+.cartelCrearTorneo {
+    position: absolute;
+    width: 500px;
+    height: 140px;
+    margin: auto;
+    background: white;
+    top: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 5px;
+}
+
+.imagenCancelar {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.labelCrearTorneo {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    padding: 30px 2px 10px 2px;
+}
+
+.datosTorneo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.editorTorneo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.tituloTorneoNuevo {
+    font-size: 25px;
+    padding: 10px;
+}
+
+.dosColumnas {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.editorProblema {
+    width: 70%;
+    height: 1500px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listaProblema {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 1500px;
+    overflow: scroll;
+}
+
+.cajaProblema {
+    width: 100%;
+    margin: 2px 0 2px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    justify-content: space-between;
+    font-size: 14px;
+    background: #f5f5f5;
+}
+
+.caja-de-Entrada {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+}
+
+.tituloProblemaNuevo {
+    border: 1px solid #cccdcc;
+    height: 25px;
+    padding-left: 10px;
+    width: 300px;
+}
+
+.imagenBorrar {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin: 0px 5px 0px 5px;
+}
+
+.imagenGuardar {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin: 0px 5px 0px 5px;
+}
+
+.imagenAgregar{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.cajaNuevoProblema {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    margin: 2px 0 2px 0;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    background: #f5f5f5;
+    transition: all 0.1s ease-in-out;
+}
+
+.cajaNuevoProblema:hover {
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.75);
+}
+
+.centrarItems {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.problemaNuevoDatos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.tablaListaTorneo {
+    width: 100%;
+    font-size: 13px;
+}
+
+.tituloTablaTorneo {
+    width: 100%;
+    border-bottom: #686664 2px solid;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.subtituloToneoLista {
+    display: flex;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bolder;
+    border-bottom: 1px solid #686664;
+    align-items: center;
+}
+
+.contenidoTablaTorneo {
+    width: 100%;
+    display: flex;
+    border: none;
+    background: white;
+    align-items: center;
+    height: 40px;
+    padding: 0 3px 0 3px;
+}
+
+.contenidoTablaTorneo:nth-child(2n-1){
+    background: #ececec;
+}
+
+.contenidoTablaTorneo:hover{
+    background: #a4a4a4;
+    color: white;
+}
+
+.editorProblemaTitulo {
+    width: 100%;
+    font-size: 20px;
+    border-bottom: 2px #686664 solid;
+    margin: 30px 0px 10px 0px;
+}
+
+.bloqueDatos{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    align-items: center;
+}
+
+.bloqueDatos input{
+    border: solid 1px #cccdcc;
+    padding-left: 5px;
+    height: 25px;
+    margin-left: 5px;
+}
+
+#cargarID {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+#fechaValidaInicio{
+    color: red;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#horaValidaInicio {
+    color: red;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.imagenSave {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+
+#idTorneoPrincipal {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    width: 50px;
+    text-align: right;
+}
+
+#idProblemaMostrado {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.imagenSaveProblem {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.cajaTituloProblema {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cajaSecundariaDatos{
+    display: flex;
+    align-items: center;
+    margin: 20px 10px 0px 10px;
+}
+
+.cajaSecundariaDatos input{
+    border: none;
+    background: transparent;
+    height: 25px;
+}
+
+.cargar-generar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+    align-items: center;
+}
+
+.lista-test{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: relative;
+}
+
+.casos-entrada {
+    width: 48%;
+}
+
+.casos-salida {
+    width: 48%;
+}
+
+#cargar-casos {
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+}
+
+#cargar-casos-generados{
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+}
+
+.deleteTest {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.casos-entrada-test{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0 3px 0;
+    border-bottom: #a4a4a4 1px solid;
+}
+
+.subtitulo-casos{
+    font-size: 18px;
+    border-bottom: 2px #686664 solid;
+}
+
+.imagenAddTorneo {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.imagenDeleteTorneo {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.imagenEditarTorneo {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    cursor: pointer;
+}
+
+
+.masRegistroCuenta{
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.masRegistroCuenta:hover{
+    background: white;
+}
+
+.editRegistroCuenta{
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.editRegistroCuenta:hover{
+    background: white;
+}
+
+.bloquearRegistroCuenta{
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.bloquearRegistroCuenta:hover{
+    background: white;
+}
+
+.imagenPerfil{
+    width: 25px;
+    height: 25px;
+}
+
+.cerrarCartel{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.tituloEditCarteles{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.modalVentanaUsuario {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.cartelVentanaUsuario {
+    position: absolute;
+    top: 50px;
+    width: 700px;
+    height: 400px;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 5px;
+}
+
+.infoUsuario1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+
+.imagenUsuarioRegistro {
+    padding: 10px;
+    border: solid 1px #a4a4a4;
+}
+
+.imagenUsuarioRegistro img{
+    width: 100px;
+    height: 100px;
+}
+
+.datosUsuarioPrincipales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 0 10px;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.datoUsuarioRegistro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    width: 100%;
+    height: 100%;
+}
+
+.infoUsuario2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 10px 10px;
+}
+
+.botonEditRegistros {
+    border: black;
+    border-radius: 3px;
+    padding: 7px;
+    background: #ececec;
+    cursor: pointer;
+}
+
+.botonEditRegistros:hover {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.selectEstiloEditRegistro{	
+    border: 1px solid #d9d9d9;
+    height: 25px;
+    overflow: hidden;
+    width: 250px;
+    position:relative;
+}
+
+.modalVentanaEditUsuario{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.cartelEditUsuario{
+    position: absolute;
+    top: 50px;
+    width: 800px;
+    height: 300px;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 5px;
+}
+
+.estiloInputEditRegistro {
+    width: 300px;
+    height: 30px;
+    border: #686664 1px solid;
+}
+
+.selectEstiloEditRegistroNivel{
+    border: 1px solid #d9d9d9;
+    height: 25px;
+    overflow: hidden;
+    width: 220px;
+    position:relative;
+}
+
+.selectEstiloEditRegistroNivelFiltro{
+    border: 1px solid #d9d9d9;
+    height: 30px;
+    overflow: hidden;
+    width: 200px;
+    position:relative;
+}
+
+.selectEstiloEditorTorneoNivel{
+    border: 1px solid #d9d9d9;
+    height: 25px;
+    overflow: hidden;
+    width: 200px;
+}
+
+.desbloquearRegistroCuenta {
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.desbloquearRegistroCuenta:hover {
+    background: white;
+}
+
+.selectEstadoTorneo select{
+    border:1px solid #d9d9d9;
+    height:30px;
+    overflow: hidden;
+    width: 150px;
+    position:relative;
+}
+
+.botonCrearTorneo {
+    width: 200px;
+    height: 35px;
+    background: #525a54;
+    color: white;
+    border: none;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.botonCrearTorneo:hover {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.inputTituloTorneoCrearTorneo {
+    width: 330px;
+    height: 30px;
+    padding-left: 10px;
+    border: solid 1px #a4a4a4;
+    margin: 10px;
+}
+
+.botonGeneralAdmin{
+    width: 200px;
+    height: 35px;
+    background: #525a54;
+    color: white;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+.botonGeneralAdmin:hover {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.editarTorneo {
+    height: 25px;
+    width: 25px;
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.editarTorneo:hover{
+    background: white;
+}
+
+.verEstadisticaTorneo {
+    height: 25px;
+    width: 25px;
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.verEstadisticaTorneo:hover{
+    background: white;
+}
+
+.bloquearTorneo {
+    height: 25px;
+    width: 25px;
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.bloquearTorneo:hover{
+    background: white;
+}
+
+.desbloquearTorneo {
+    height: 25px;
+    width: 25px;
+    border-radius: 15%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.desbloquearTorneo:hover{
+    background: white;
+}
+
+.botonGuardarDatos{
+    width: 150px;
+    height: 25px;
+    background: #525a54;
+    color: white;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 1px;
+}
+
+.botonGuardarDatos:hover {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+}
+
+.footer {
+    font-size: 15px;
+    width: 100%;
+}
+
+.footer-linea {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    height: 0.1px;
+    background: #e8eaee;
+    box-shadow: 0px 0px 1px 1px #b1afbf;
+}
+
+.footer p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #8a8995;
+    text-align: center;
+}
+
+.cajaDatoProblema {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    justify-content: space-between;
+}
+
+.imagenFlechaArriba {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+}
+
+.imagenFlechaArriba:hover {
+    background: #cccdcc;
+}
+
+.imagenFlechaAbajo {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+}
+
+.imagenFlechaAbajo:hover {
+    background: #cccdcc;
+}
+
+.imagenFlechaNone {
+    width: 20px;
+    height: 20px;
+}
+
+.archivoGenerar {
+    width: 30px;
+    height: 30px;
+    display: none;
+}
+
+.labelArchivoGenerar {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.imagenArchivoGenerar {
+    width: 30px;
+    height: 30px;
+}
+
+.fileCasosDePrueba {
+    width: 150px;
+    height: 30px;
+    display: none;
+}
+
+.fileCasosDePruebaBoton {
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cantidadCasosPublicos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cantidadCasosPublicos select {
+    border: 1px solid #d9d9d9;
+    height: 25px;
+    overflow: hidden;
+    width: 50px;
+}
+
+.mirarCasosDePrueba {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+.mirarCasosDePrueba:hover {
+    background: #dedede;
+}
+
+.descargarCasoDePrueba {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+.descargarCasoDePrueba:hover {
+    background: #dedede;
+}
+
+.modalMostrarContenidoTest {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.cartelMostrarContenidoTest {
+    position: absolute;
+    top: 50px;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.contenidoCartelMostrarTest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px;
+}
+
+.textAreaContenidoTest {
+    border:1px solid #d9d9d9;
+    padding: 2px;
+}
+
+.contenidoEstadistico {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+}
+
+.tablaDeEnvios {
+    border: 1px black solid;
+    font-size: 15px;
+    padding: 5px;
+    margin: 10px 0px 10px 0;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
