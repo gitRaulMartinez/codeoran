@@ -279,7 +279,8 @@ function busquedaDuracionFiltroTorneo(settings, data, dataIndex){
 }
 
 function busquedaFechaFiltroTorneoCreacion(settings, data, dataIndex){
-    var date = new Date(data[4]);
+    let fecha = data[4].split('-');
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
     var minimo = new Date(fechaMinimaTorneoCreacion);
     var maximo = new Date(fechaMaximaTorneoCreacion);
     if(( minimo <= date && date <= maximo )) return true;
@@ -295,7 +296,8 @@ function busquedaHoraFiltroTorneoCreacion(settings, data, dataIndex){
 }
 
 function busquedaFechaFiltroTorneoInicio(settings, data, dataIndex){
-    var date = new Date(data[6]);
+    let fecha = data[6].split('-');
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
     var minimo = new Date(fechaMinimaTorneoInicio);
     var maximo = new Date(fechaMaximaTorneoInicio);
     if(( minimo <= date && date <= maximo )) return true;

@@ -9,6 +9,7 @@
     <!-- Estilos CSS Enlaces -->
     <link rel="stylesheet" href="../CSS/animate.min.css">
     <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/estadistica.css">
     <link rel="stylesheet" href="../Frameworks/Bootstrap/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="../Frameworks/Bootstrap-icons/bootstrap-icons.css"></link>
     <link rel="stylesheet" href="../Frameworks/DataTables/dataTables.bootstrap5.min.css"></link>
@@ -58,13 +59,209 @@
         </nav>
     </header>
     <main class="seccion">
+        <div class="d-flex justify-content-center align-items-center my-5">
+            <h1 class="mb-0 me-3">Resumen estadístico</h1>
+            <i class="bi bi-bar-chart-line-fill fs-1"></i>
+        </div>
+        <div class="general-estadistica-contenedor">
+            <div class="card d-flex flex-column justify-content-between">
+                <h4 class="mb-0">Total de envios</h4>
+                <div class="d-flex justify-content-between align-items-end">
+                    <p class="mb-0 fs-1">300</p>
+                    <img src="../Imagenes/mensaje.gif" alt="Mensaje gif" class="estadistica-general-imagen">
+                </div>
+            </div>
+            <div class="card d-flex flex-column justify-content-between">
+                <h4 class="mb-0">Total de usuarios</h4>
+                <div class="d-flex justify-content-between align-items-end">
+                    <p class="mb-0 fs-1">300</p>
+                    <img src="../Imagenes/cliente.gif" alt="Cliente gif" class="estadistica-general-imagen">
+                </div>
+            </div>
+            <div class="card d-flex flex-column justify-content-between">
+                <h4 class="mb-0">Problemas resuelto</h4>
+                <div class="d-flex justify-content-between align-items-end">
+                    <p class="mb-0 fs-1">5</p>
+                    <img src="../Imagenes/globos.gif" alt="Mensaje gif" class="estadistica-general-imagen">
+                </div>
+            </div>
+        </div>
         <div class="card my-3 sombraTable w-100">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <h5 class="card-title">Envios</h5>
-                    <p class="card-text">Total de envios realizados <strong id="totalEnvioTorneo"></strong></p>
-                </li>
-                <li class="list-group-item tablaRespuestas">
+            <div class="card-body">
+                <h2 class="mb-0">Estadistica envios</h2>
+                <hr>
+                <div class="d-flex justify-content-start align-items-center flex-wrap" id="cargar-botones-problemas"></div>
+                <div class="d-flex justify-content-between">
+                    <div class="datos-respuestas">
+                        <div class="card d-flex flex-row justify-content-between align-items-center">
+                            <b class="mb-0 flex-grow-1">Respuestas</b>
+                        </div>
+                        <div class="card d-flex flex-row justify-content-between align-items-center">
+                            <div class="circle verde me-2"></div>
+                            <p class="mb-0 flex-grow-1">Aceptado</p>
+                            <p class="mb-0 porcentaje respuesta-a">10 %</p>
+                        </div>
+                        <div class="card d-flex flex-row justify-content-between align-items-center">
+                            <div class="circle rojo me-2"></div>
+                            <p class="mb-0 flex-grow-1">Incorrecta</p>
+                            <p class="mb-0 porcentaje respuesta-i"></p>
+                        </div>
+                        <div class="card d-flex flex-row justify-content-between align-items-center">
+                            <div class="circle azul me-2"></div>
+                            <p class="mb-0 flex-grow-1">Compilación error</p>
+                            <p class="mb-0 porcentaje respuesta-c"></p>
+                        </div>
+                        <div class="card d-flex flex-row justify-content-between align-items-center">
+                            <div class="circle violeta me-2"></div>
+                            <p class="mb-0 flex-grow-1">Error en tiempo de ejecución</p>
+                            <p class="mb-0 porcentaje respuesta-e"></p>
+                        </div>
+                        <div class="card d-flex flex-row justify-content-between align-items-center">
+                            <div class="circle naranja me-2"></div>
+                            <p class="mb-0 flex-grow-1">Tiempo limite excedido</p>
+                            <p class="mb-0 porcentaje respuesta-t"></p>
+                        </div>
+                    </div>
+                    <div class="card position-relative contenedor-barras-grafico respuestas">
+                        <div class="contenedor-barra" data-respuesta="A">
+                            <div class="cantidad-contenedor">
+                                <span class="cantidad"></span>
+                            </div>
+                            <div class="contenido-barra color-aceptado"></div>
+                        </div>
+                        <div class="contenedor-barra" data-respuesta="RI" >
+                            <div class="cantidad-contenedor">
+                                <span class="cantidad"></span>
+                            </div>
+                            <div class="contenido-barra color-incorrecto"></div>
+                        </div>
+                        <div class="contenedor-barra" data-respuesta="CP">
+                            <div class="cantidad-contenedor">
+                                <span class="cantidad"></span>
+                            </div>
+                            <div class="contenido-barra color-compilacion"></div>
+                        </div>
+                        <div class="contenedor-barra" data-respuesta="EETE">
+                            <div class="cantidad-contenedor">
+                                <span class="cantidad"></span>
+                            </div>
+                            <div class="contenido-barra color-ejecucion"></div>
+                        </div>
+                        <div class="contenedor-barra" data-respuesta="TLE">
+                            <div class="cantidad-contenedor">
+                                <span class="cantidad"></span>
+                            </div>
+                            <div class="contenido-barra color-tiempo"></div>
+                        </div>
+                    </div>
+                    <div class="contenedor-estadistica-respuestas">
+                        <div class="card d-flex flex-column justify-content-between">
+                            <h5>Total</h5>
+                            <div class="d-flex justify-content-between align-items-end">
+                                <p class="fs-3 mb-0 total-respuesta">500</p>
+                                <i class="bi bi-file-earmark-binary icon-respuesta"></i>
+                            </div>
+                        </div>
+                        <div class="card d-flex flex-column justify-content-between">
+                            <h5>Participación</h5>
+                            <div class="d-flex justify-content-between align-items-end">
+                                <p class="fs-3 mb-0 participacion-respuesta">500</p>
+                                <i class="bi bi-people icon-respuesta"></i>
+                            </div>
+                        </div>
+                        <div class="card d-flex flex-column justify-content-between">
+                            <h5>Promedio</h5>
+                            <div class="d-flex justify-content-between align-items-end">
+                                <p class="fs-3 mb-0 promedio-respuesta">500</p>
+                                <i class="bi bi-bar-chart icon-respuesta"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card my-3 sombraTable w-100">
+            <div class="card-body">
+                <h3 class="mb-0">Transcurso del torneo</h3>
+                <hr>
+                <div class="d-flex justify-content-start align-items-center flex-wrap" id="cargar-botones-problemas"></div>
+                <div class="d-flex justify-content-between">
+                    <div class="position-relative contenedor-barra-tiempo d-flex flex-row justify-content-start flex-grow-1 mb-3"></div>
+                    <div class="problemas-barras-tiempo">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card my-3 sombraTable w-100">
+            <div class="card-body">
+                <h3 class="mb-0">Lenguajes utlizados</h3>
+                <hr>
+                <div class="d-flex justify-content-between lenguaje-estadistica">
+                    <div class="position-relative contenedor-barra-lenguaje d-flex flex-column justify-content-start flex-grow-1 mb-3">
+                        <div class="contenedor-barra-l" data-respuesta="C">
+                            <div class="contenido-barra c"></div>
+                            <img src="../Imagenes/c.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <span class="cantidad">10</span>
+                        </div>
+                        <div class="contenedor-barra-l" data-respuesta="CPLUS">
+                            <div class="contenido-barra cplus"></div>
+                            <img src="../Imagenes/cplus.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <span class="cantidad">10</span>
+                        </div>
+                        <div class="contenedor-barra-l" data-respuesta="PYTHON">
+                            <div class="contenido-barra python"></div>
+                            <img src="../Imagenes/python.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <span class="cantidad">10</span>
+                        </div>
+                        <div class="contenedor-barra-l" data-respuesta="JAVA">
+                            <div class="contenido-barra java"></div>
+                            <img src="../Imagenes/java.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <span class="cantidad">10</span>
+                        </div>
+                        <span class="label-x-lenguajes">Cantidad de envios</span>
+                    </div>
+                    <div class="lenguaje-cuadros">
+                        <div class="relative card p-3">
+                            <h3>C</h3>
+                            <img src="../Imagenes/c.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <p class="c-l mb-0"></p>
+                        </div>
+                        <div class="relative card p-3">
+                            <h3>C++</h3>
+                            <img src="../Imagenes/cplus.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <p class="cplus-l mb-0"></p>
+                        </div>
+                        <div class="relative card p-3">
+                            <h3>Python</h3>
+                            <img src="../Imagenes/python.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <p class="python-l mb-0"></p>
+                        </div>
+                        <div class="relative card p-3">
+                            <h3>Java</h3>
+                            <img src="../Imagenes/java.png" alt="Logo c" class="imagen-logo-lenguaje">
+                            <p class="java-l mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card my-3 sombraTable w-100">
+            <div class="card-body">
+                <h3 class="mb-0">Paises</h3>
+                <hr>
+                <div class="d-flex justify-content-between paises-estadistica">
+                    <div class="position-relative contenedor-barra-paises d-flex flex-column justify-content-start flex-grow-1 mb-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card my-3 sombraTable w-100">
+            <div class="card-header">
+                <h5 class="card-title my-1">Resumen Estadistico - Torneo Nombre</h5>
+            </div>
+            <div class="card-body">
+                <div>
                     <div class="tablaRespuestas">
                         <table class="table table-hover">
                             <thead>
@@ -116,63 +313,44 @@
                             <canvas id="torneoCirculoEstadisticoEnvios"></canvas>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <div class="card my-3 sombraTable w-100">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <h5 class="card-title">Numero de envios por problemas</h5>
-                    <p class="card-text">Total de problemas: <span id="numeroDeProblemas">10</span></p>
-                </li>
-                <li class="list-group-item tablaRespuestas">
-                    <div class="w-100">
-                        <canvas id="diagramaBarrasRespuesta"></canvas>
+                </div>
+                <div class="mt-3"> 
+                    <h5 class="mb-0">Envios</h5>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="diagramaBarrasRespuesta" class="max-heigth-estadistica"></canvas>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <div class="card my-3 sombraTable w-100">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Tiempo - envio</li>
-                <li class="list-group-item tablaRespuestas">
-                    <div class="w-100">
-                        <canvas id="lineaEnvios"></canvas>
+                </div>
+                <div class="mt-3">
+                    <h5 class="mb-0">Torneo</h5>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="lineaEnvios" class="max-heigth-estadistica"></canvas>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <div class="card my-3 sombraTable w-100">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Lenguaje</li>
-                <li class="list-group-item tablaRespuestas">
-                    <div class="w-100">
-                        <canvas id="barraLenguaje"></canvas>
+                </div>
+                <div class="mt-3">
+                    <h5 class="mb-0">Lenguajes utilizados</h5>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="barraLenguaje" class="max-heigth-estadistica"></canvas>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <div class="card my-3 sombraTable w-100">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Paises</li>
-                <li class="list-group-item tablaRespuestas">
-                    <div class="w-100">
-                        <canvas id="barraPaises"></canvas>
+                </div>
+                <div class="mt-3">
+                    <h5 class="mb-0">Paises</h5>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="barraPaises" class="max-heigth-estadistica"></canvas>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <div class="card my-3 sombraTable w-100">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Preguntas</li>
-                <li class="list-group-item tablaRespuestas">
-                    <div class="w-100">
-                        <canvas id="barraPreguntas"></canvas>
+                </div>
+                <div class="mt-3">
+                    <h5 class="mb-0">Preguntas realizadas</h5>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <canvas id="barraPreguntas" class="max-heigth-estadistica"></canvas>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-
         <div class="toast-container contenedor-de-notificacion" id="notificaciones"></div>
     </main>
     <footer class="footer mt-auto fondo-menu sombraTablefooterPrincipal p-3">

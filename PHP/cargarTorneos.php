@@ -9,7 +9,7 @@
         }
         else die("Error Sesion"); 
         if(!controlPaginaAdministrador($conexion,$usuario)) die("Error admin"); 
-        $sql = "SELECT * FROM BD.torneos;";
+        $sql = "SELECT idTorneo,nombre,nivelTorneo,duracion,DATE_FORMAT(fechaInicio, '%d-%m-%Y') AS fechaInicio,horaInicio,DATE_FORMAT(fechaCreacion, '%d-%m-%Y') AS fechaCreacion,horaCreacion,tiempoPenalizacion FROM BD.torneos;";
         $resp = mysqli_query($conexion,$sql);
         if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
         $arreglo['data'] = [];
@@ -39,7 +39,7 @@
             $lista = inscripciones($conexion,$_SESSION['usuario']);
         }
         else $sesion = false;
-        $sql = "SELECT idTorneo,nombre,fechaInicio,horaInicio,duracion,DATE_FORMAT(DATE_ADD(CONCAT(CONCAT(fechaInicio,' '),horaInicio),INTERVAL duracion HOUR_SECOND) , '%Y-%c-%d %H:%i:%S') as fechaFin,COUNT(idProblema) as numeroProblema FROM BD.torneos LEFT JOIN BD.problemas ON torneo = idTorneo WHERE nivelTorneo = 2 GROUP BY idTorneo;";
+        $sql = "SELECT idTorneo,nombre,DATE_FORMAT(fechaInicio, '%d-%m-%Y') AS fechaInicio,horaInicio,duracion,DATE_FORMAT(DATE_ADD(CONCAT(CONCAT(fechaInicio,' '),horaInicio),INTERVAL duracion HOUR_SECOND) , '%Y-%c-%d %H:%i:%S') as fechaFin,COUNT(idProblema) as numeroProblema FROM BD.torneos LEFT JOIN BD.problemas ON torneo = idTorneo WHERE nivelTorneo = 2 GROUP BY idTorneo;";
         $resp = mysqli_query($conexion,$sql);
         if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
         $arreglo['data'] = [];

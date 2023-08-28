@@ -655,7 +655,8 @@ function cargarSelectOffCanvasProblema(){
 }
 
 function busquedaFechaFiltroEnvio(settings, data, dataIndex){
-    var date = new Date(data[3]);
+    let fecha = data[3].split('-')
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
     if(( minFechaEnvio <= date  && date <= maxFechaEnvio )) return true;
     return false;
 }
@@ -1046,7 +1047,8 @@ function cargarSelectOffCanvasPregunta(){
 }
 
 function busquedaFechaFiltroPregunta(settings, data, dataIndex){
-    var date = new Date(data[6]);
+    let fecha = data[6].split('-');
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
     var minimo = new Date(minFechaPregunta);
     var maximo = new Date(maxFechaPregunta);
     if(( minimo <= date && date <= maximo )) return true;

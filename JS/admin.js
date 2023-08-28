@@ -292,7 +292,8 @@ function cargarOffCanvasFiltroUsuario(){
 }
 
 function busquedaFechaCreacionFiltroUsuario(settings, data, dataIndex){
-    var date = new Date(data[5]);
+    let fecha = data[5].split('-');
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
     var minimo = new Date(fechaMinimaCreacion);
     var maximo = new Date(fechaMaximaCreacion);
     if(( minimo <= date && date <= maximo )) return true;
@@ -308,7 +309,8 @@ function busquedaHoraCreacionFiltroUsuario(settings, data, dataIndex){
 }
 
 function busquedaFechaUltimaConexionFiltroUsuario(settings, data, dataIndex){
-    var date = new Date(data[7]);
+    let fecha = data[7].split('-');
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
     var minimo = new Date(fechaMinimaUltimaConexion);
     var maximo = new Date(fechaMaximaUltimaConexion);
     if(( minimo <= date && date <= maximo )) return true;

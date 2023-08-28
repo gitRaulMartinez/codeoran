@@ -1,0 +1,423 @@
+.contenedor-barra {
+    width: 100px;
+    height: 450px;
+    position: relative;
+}
+
+.contenedor-barra .etiqueta {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100px;
+    text-align: center;
+    height: 35px;
+    font-size: 11px;
+    color: grey;
+}
+
+.contenedor-barra .contenido-barra {
+    border: solid 1px;
+    border-radius: 0;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    height: 0px;
+    width: 50px;
+    transition: all ease-in-out 0.5s;
+    border-radius: 5px 5px 0 0;
+}
+
+.contenedor-barra .color-aceptado {
+    background-color: #6CCB91;
+    border-color: #6CCB91;
+}
+
+.contenedor-barra .color-incorrecto {
+    background-color: #FFA4B2;
+    border-color: #FFA4B2;
+}
+
+.contenedor-barra .color-compilacion {
+    background-color: #75AEE2;
+    border-color: #75AEE2;
+}
+
+.contenedor-barra .color-ejecucion {
+    background-color: #BBA0E6;
+    border-color: #BBA0E6;
+}
+
+.contenedor-barra .color-tiempo {
+    background-color: #FFB978;
+    border-color: #FFB978;
+}
+
+.datos-respuestas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 350px;
+    flex-shrink: 1;
+    max-height: 450px;
+    margin-right: 2rem;
+    justify-content: start;
+}
+
+.datos-respuestas .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.datos-respuestas > div {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.datos-respuestas .verde {
+    background-color: #6CCB91;
+}
+.datos-respuestas .azul {
+    background-color: #75AEE2;
+}
+.datos-respuestas .naranja {
+    background-color: #FFB978;
+}
+.datos-respuestas .violeta {
+    background-color: #BBA0E6;
+}
+.datos-respuestas .rojo {
+    background-color: #FFA4B2;
+}
+
+.contenedor-barra .cantidad-contenedor {
+    position: absolute;
+    bottom: 105px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    vertical-align: center;
+    left: 33px;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.459);
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 0.5s;
+}
+
+.contenedor-barras-grafico {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.contenedor-estadistica-respuestas {
+    flex-basis: 200px;
+    flex-shrink: 1;
+    max-height: 450px;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor-estadistica-respuestas > div {
+    flex-grow: 1;
+    padding: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.contenedor-estadistica-respuestas > div:last-child {
+    margin-bottom: 0;
+}
+
+.contenedor-estadistica-respuestas .icon-respuesta {
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    color: white;
+    background-color: rgba(13, 109, 253, 0.712);
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.contenedor-estadistica-respuestas .span-respuesta {
+    font-size: 12px;
+}
+
+.label-barra-respuesta {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.label-barra-respuesta p {
+    font-size: 1rem;
+    color: grey;
+}
+
+.general-estadistica-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.general-estadistica-contenedor > div {
+    max-width: 300px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.general-estadistica-contenedor .estadistica-general-imagen {
+    width: 80px;
+    height: 80px;
+}
+
+.datos-usuarios {
+    flex-basis: 350px;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 2rem;
+    justify-content: start;
+}
+
+.contenedor-barra-tiempo {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: grey;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-t {
+    width: 50px;
+    height: 400px;
+    position: relative;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-t .contenido-barra,.contenedor-barra-tiempo .contenedor-barra-t .contenido-barra-general {
+    width: 30px;
+    height: 0px;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    border-radius: 5px 5px 0 0;
+    transition: all ease-in-out 0.5s;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-t .color-envio-principal {
+    background-color: #648cf0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-t .color-envio-principal:hover {
+    background-color: #2a5de0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-t .color-envio-general {
+    background-color: #859ee4a2;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-punto {
+    width: 6px;
+    height: 400px;
+    position: relative;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-punto .contenido-barra {
+    width: 2px;
+    height: 380px;
+    left: 2px;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(transparent 50%, gray 50%);
+    background-size: 100% 10px;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-punto .contenido-etiqueta {
+    position: absolute;
+    top: 0;
+    left: -47px;
+    width: 100px;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.contenedor-barra-tiempo .contenedor-barra-punto .contenido-etiqueta-low {
+    position: absolute;
+    bottom: -25px;
+    font-size: 14px;
+    left: -47px;
+    width: 100px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.problemas-barras-tiempo {
+    flex-basis: 250px;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-style: solid;
+    border-color: grey;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .label-x-lenguajes {
+    position: absolute;
+    bottom: -25px;
+    left: 47%;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l {
+    width: 100%;
+    height: 70px;
+    position: relative;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .contenido-barra {
+    width: 0;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    top: 10px;
+    border-radius: 0 5px 5px 0;
+    transition: all ease-in-out 0.5s;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .c {
+    background-color: #75AEE2;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .cplus {
+    background-color: #276197;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .python {
+    background-color: #f2ff39;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .java {
+    background-color: #e0e0e0;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .imagen-logo-lenguaje {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: -45px;
+    top: 15px;
+}
+
+.lenguaje-estadistica .contenedor-barra-lenguaje .contenedor-barra-l .cantidad {
+    position: absolute;
+    left: 50%;
+    top: 23px;
+    margin-left: 10px;
+    transition: all ease-in-out 0.5s;
+}
+
+.lenguaje-estadistica .lenguaje-cuadros {
+    flex-basis: 400px;
+    flex-shrink: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 135px;
+    gap: 1rem;
+}
+
+.lenguaje-estadistica .lenguaje-cuadros .imagen-logo-lenguaje {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 80px;
+    height: 80px;
+}
+
+.lenguaje-estadistica .lenguaje-cuadros p {
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.paises-estadistica .contenedor-barra-paises{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px;
+    border-left: 1px;
+    border-style: solid;
+    border-color: grey;
+    margin-right: 50px;
+    margin-left: 160px;
+    min-height: 300px;
+}
+
+.paises-estadistica .contenedor-barra-paises .contenedor-barra-p {
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+.paises-estadistica .contenedor-barra-paises .contenedor-barra-p .contenido-barra {
+    width: 0;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    top: 10px;
+    border-radius: 0 5px 5px 0;
+    background-color: #2a5de0;
+    transition: all ease-in-out 0.5s;
+}
+
+.paises-estadistica .contenedor-barra-paises .contenedor-barra-p .cantidad {
+    position: absolute;
+    left: 50%;
+    top: 13px;
+    margin-left: 10px;
+    transition: all ease-in-out 0.5s;
+}
+
+.paises-estadistica .contenedor-barra-paises .label-x-paises {
+    position: absolute;
+    bottom: -25px;
+    left: 47%;
+}
+
+.paises-estadistica .contenedor-barra-paises .contenedor-barra-p .label-data-pais {
+    position: absolute;
+    top: 13px;
+    left: -155px;
+    width: 150px;
+    text-align: right;
+}

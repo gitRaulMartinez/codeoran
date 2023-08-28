@@ -155,6 +155,7 @@ function cargarOffCanvasFiltroTorneo(){
         });
     }
 
+    
     $.fn.dataTable.ext.search.push(busquedaFechaFiltro);
     $.fn.dataTable.ext.search.push(busquedaTiempoFiltro);
     $.fn.dataTable.ext.search.push(busquedaProblemasFiltro);
@@ -202,7 +203,6 @@ function cargarTorneos(){
             data: {metodo: "tabla"},
             dataSrc: function (json){
                 arrayTorneos = [];
-                console.log(json.data);
                 json.data.forEach(torneo => {
                     if(torneo.estado != 2){
                         arrayTorneos.push({id: torneo.idTorneo, estado: torneo.estado, fechaInicio: torneo.fechaInicio+' '+torneo.horaInicio, fechaFin: torneo.fechaFin});
@@ -294,7 +294,9 @@ function cargarTorneos(){
 }
 
 function busquedaFechaFiltro(settings, data, dataIndex){
-    var date = new Date(data[2]);
+    let fecha = data[2].split('-')
+    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
+    console.log(date);
     if(( minFecha <= date  && date <= maxFecha )) return true;
     return false;
 }
@@ -432,7 +434,6 @@ function ordenSegundos(a,b){
 }
 
 function cargarEnlace(){
-    
     $.ajax({
         url: "../PHP/cargarEnlaceTorneos.php",
         type: "GET",
@@ -461,8 +462,6 @@ function cargarEnlace(){
             }
             else{
                 let resp = JSON.parse(respuesta);
-                console.log(resp);
-                console.log(arrayEnlaces);
                 if(resp.error){
                     cartelNotificacion(resp.mensaje);
                     console.log(resp.descripcion);
