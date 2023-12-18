@@ -43,6 +43,7 @@
         $resp = mysqli_query($conexion,$sql);
         if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
         $arreglo['data'] = [];
+        $dataArray = array();
         while($dato = mysqli_fetch_assoc($resp)){
             $dato['estado'] = estadoTorneo($conexion,$dato['idTorneo'],$hoy);
             $dato['DT_RowClass'] = 'align-middle';
@@ -82,7 +83,15 @@
                 case 1: $dato['cartelEstado'] = "Finaliza en"; break;
                 case 2: $dato['cartelEstado'] = "Finalizado"; break;
             }
-            $arreglo['data'] []= $dato;
+            $dataArray[] = $dato;
+             
+        }
+        function compareEstado($a, $b) {
+            return $a['estado'] - $b['estado'];
+        }
+        usort($dataArray, 'compareEstado');
+        foreach ($dataArray as $dato) {
+            $arreglo['data'][] = $dato;
         }
         echo json_encode($arreglo);
     } 

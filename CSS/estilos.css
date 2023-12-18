@@ -770,6 +770,12 @@
     pointer-events: none;
 }
 
+.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: none;
+}
+
 .cajaEnvio {
     width: 100%;
     display: flex;
@@ -1607,10 +1613,10 @@
     transition: all 0.5s ease-in-out;
 }
 
-.configuracion-datos-torneo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.contenedor-datos-torneo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
 .columna-problemas-editor {
@@ -1663,10 +1669,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.columna-dato-1-torneo {
-    margin-right: 1rem !important;
 }
 
 .caja-tablas-casos-de-prueba {
@@ -1745,42 +1747,50 @@
 
 .contenido-v2 {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    height: calc(100vh - 78.5px);
-    position: relative;
-    padding: 0 10px;
-}
-
-.contenido-titulo {
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    grid-template-rows: 1fr;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    min-height: 60vh;
+    align-items: center;
+    position: relative;
+    padding: 0 100px;
 }
 
 .imagen-inicio {
-    width: 100px;
+    width: 60px;
 }
 
-
 .titulo-inicio {
-    font-size: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 55px;
+    margin: 3rem 0;
+    font-weight: 700;
+    color: #444444;
+    text-align: center;
 }
 
 .parrafo-inicio {
-    font-size: 20px;
+    font-size: 1.7rem;
+    font-weight: 100;
+}
+
+.contenido-imagen {
+    border-radius: 8rem;
+    overflow: hidden;
+    flex-basis: 350px !important;
+    flex-shrink: 0;
+    width: 350px;
+    height: 350px;
+}
+
+.contenido-imagen > img {
+    width: 350px;
+    height: 350px;
 }
 
 .contenido-texto-inicio {
-    width: 100%;
-}
+    flex-grow: 1;
 
-.color-oscuro {
-    background-color: #444444;
 }
 
 .tablaRespuestas {
@@ -1819,6 +1829,38 @@
 .max-card-width {
     width: 100%;
     max-width: 800px;
+}
+
+.elemento-invisible {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.boton-problema-up, .boton-problema-down {
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.boton-problema-up:hover, .boton-problema-down:hover {
+    background-color: #9c9c9c !important;
+    border-color: #d1d1d1 !important;
+}
+
+.ancho-100 {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.cargarProblema-action {
+    position: relative;
 }
 
 /* Responsive */
@@ -1864,6 +1906,14 @@
     .botonProblema::before {
         content: "";
     }
+
+    .boton-problema-up, .boton-problema-down {
+        display: none !important;
+    }
+
+    .contenedor-datos-torneo {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -1897,13 +1947,7 @@
     .bodyPrincipal{
         padding: 0 !important;
     }
-    .configuracion-datos-torneo {
-        flex-direction: column;
-    }
-
-    .columna-dato-1-torneo {
-        margin-right: 0 !important;
-    }
+    
     .titulo-inicio {
         font-size: 3rem;
         margin-bottom: 20px;
@@ -1938,6 +1982,9 @@
     }
     .titulo-inicio {
         text-align: center;
+    }
+    .contenedor-datos-torneo {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 

@@ -18,424 +18,6 @@ $(document).ready(function(){
     obtenerTorneo();
 });
 
-function cargarDatosTorneo(){
-    var datos = {
-        idTorneo : idTorneo,
-        metodo: "admin"
-    };
-    $.ajax({
-        url: "../PHP/cargarTorneo.php",
-        type: "POST",
-        data: datos,
-        success: function(respuesta){
-            let resp = JSON.parse(respuesta);
-            if(resp.error){
-                cartelNotificacion(resp.mensaje);
-                console.log(resp.descripcion);
-            }
-            else{
-                let torneo = resp.respuesta;
-                //document.getElementById("torneoTitulo").innerHTML = torneo.nombre;
-                switch(torneo.estado){
-                    case 0: document.getElementById("torneoEstado").innerHTML = "Estado: Sin iniciar"; break;
-                    case 1: document.getElementById("torneoEstado").innerHTML = "Estado: En transcurso"; break;
-                    case 2: document.getElementById("torneoEstado").innerHTML = "Estado: Finalizado"; break;
-                }
-                cargarDatosEstadisticosEnvios();
-            }
-        }
-    });
-}
-
-function cargarDatosEstadisticosEnvios(){
-    var datos = {
-        idTorneo : idTorneo
-    };
-    $.ajax({
-        url: "../PHP/estadistica.php",
-        type: "POST",
-        data: datos,
-        success: function(respuesta){
-            let resp = JSON.parse(respuesta);
-            if(resp.error){
-                cartelNotificacion(resp.mensaje);
-                console.log(resp.descripcion);
-            }
-            else{
-                let envios = resp.datos;
-                $("#totalEnvioTorneo").html(envios.totalEnvio);
-                arrayProblemas = envios.problemas;
-                //document.getElementById("numeroDeProblemas").innerHTML = envios.problemas.length;
-                envios.json.forEach(envio => {
-                    switch(envio.respuesta){
-                        case 'Aceptado': arrayRespuestaEnvioTotal['A'] += parseInt(envio.cantidad); break;
-                        case 'Compilacion Fallida': arrayRespuestaEnvioTotal['CP'] += parseInt(envio.cantidad); break;
-                        case 'En espera': arrayRespuestaEnvioTotal['EE'] += parseInt(envio.cantidad); break;
-                        case 'Error en Tiempo de Ejecucion': arrayRespuestaEnvioTotal['EETE'] += parseInt(envio.cantidad); break;
-                        case 'Respuesta Incorrecta': arrayRespuestaEnvioTotal['RI'] += parseInt(envio.cantidad); break;
-                        case 'Tiempo Limite Excedido': arrayRespuestaEnvioTotal['TLE'] += parseInt(envio.cantidad); break;
-                    }
-                });
-                generarCirculoDeDatosEnvios();
-                generarTiempoEnvios();
-                generarTablaEnvios(parseFloat(envios.totalEnvio));
-                generarDiagramaDeBarras(envios.setRespuesta,parseInt(envios.totalProblemas),envios.problemas);
-                generarBarraLenguajes(envios.lenguajes);
-                generarBarraPreguntas(envios.preguntas,envios.problemas);
-                generarBarraPaises(envios.datoPais);
-            }
-        }
-    });
-}
-
-function generarCirculoDeDatosEnvios(){
-    const circuloDeDatos = document.getElementById("torneoCirculoEstadisticoEnvios");
-    const myCirculoDeDatos = new Chart(circuloDeDatos,{
-        type: 'pie',
-        data: {
-            labels: ['En espera','Aceptado','Respuesta Incorrecta','Compilacion Fallida','Error en tiempo de Ejecucion','Tiempo Limite Excedido'],
-            datasets: [{
-                label: ['En espera','Aceptado','Respuesta Incorrecta','Compilacion Fallida','Error en tiempo de Ejecucion','Tiempo Limite Excedido'],
-                data: [arrayRespuestaEnvioTotal['EE'],arrayRespuestaEnvioTotal['A'],arrayRespuestaEnvioTotal['RI'],arrayRespuestaEnvioTotal['CP'],arrayRespuestaEnvioTotal['EETE'],arrayRespuestaEnvioTotal['TLE']],
-                backgroundColor: [
-                    '#bababa',
-                    '#30d500',
-                    '#f50b0b',
-                    '#1d7aea',
-                    '#fa27f3',
-                    '#ffbd26'
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'top',
-              },
-              title: {
-                display: false,
-                text: 'Envios'
-              }
-            }
-        }
-    });
-}
-
-function generarTablaEnvios(total){
-    document.getElementById("respuestaA#").innerHTML = arrayRespuestaEnvioTotal['A'];
-    document.getElementById("respuestaA%").innerHTML = (total != 0) ? parseFloat((parseFloat(arrayRespuestaEnvioTotal['A'])/total)*100).toFixed(2) : 0;
-    document.getElementById("respuestaCP#").innerHTML = arrayRespuestaEnvioTotal['CP'];
-    document.getElementById("respuestaCP%").innerHTML = (total != 0) ? parseFloat((parseFloat(arrayRespuestaEnvioTotal['CP'])/total)*100).toFixed(2): 0;
-    document.getElementById("respuestaEE#").innerHTML = arrayRespuestaEnvioTotal['EE'];
-    document.getElementById("respuestaEE%").innerHTML = (total != 0) ? parseFloat((parseFloat(arrayRespuestaEnvioTotal['EE'])/total)*100).toFixed(2): 0;
-    document.getElementById("respuestaRI#").innerHTML = arrayRespuestaEnvioTotal['RI'];
-    document.getElementById("respuestaRI%").innerHTML = (total != 0) ? parseFloat((parseFloat(arrayRespuestaEnvioTotal['RI'])/total)*100).toFixed(2): 0;
-    document.getElementById("respuestaEETE#").innerHTML = arrayRespuestaEnvioTotal['EETE'];
-    document.getElementById("respuestaEETE%").innerHTML = (total != 0) ? parseFloat((parseFloat(arrayRespuestaEnvioTotal['EETE'])/total)*100).toFixed(2): 0;
-    document.getElementById("respuestaTLE#").innerHTML = arrayRespuestaEnvioTotal['TLE'];
-    document.getElementById("respuestaTLE%").innerHTML = (total != 0) ? parseFloat((parseFloat(arrayRespuestaEnvioTotal['TLE'])/total)*100).toFixed(2): 0;
-    document.getElementById("respuestaT#").innerHTML = total;
-    document.getElementById("respuestaT%").innerHTML = (total != 0) ? 100 : 0;
-}
-
-function generarDiagramaDeBarras(setRespuesta,totalProblemas,problemas){
-    let data = [];
-    let colores = ['#ffbd26','#fa27f3','#1d7aea','#f50b0b','#30d500','#bababa'];
-    let c = 0;
-    setRespuesta.forEach(resp => {
-        let lista = [];
-        for(let i=0;i<totalProblemas;i++) lista.push(0);
-        resp.cantidadRespuesta.forEach(valor => {
-            lista[valor.letra.charCodeAt(0)-65] = parseInt(valor.cantidad);
-        });    
-        data.push({label: resp.respuesta, data: lista, backgroundColor: colores[c]});
-        c++;
-    });
-    const diagramBarra = document.getElementById('diagramaBarrasRespuesta');
-    const myDiagramaBarrra = new Chart(diagramBarra, {
-        type: 'bar',
-        data: {
-            labels: problemas.map((obj) => obj.letra),
-            datasets: data,
-        },
-        options: {
-            indexAxis: 'x',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        title: tooltipProblema
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    position: 'bottom',
-                    suggestedMax: 10,
-                    title: {
-                        display: true,
-                        text: 'Problemas'
-                    }
-                },
-                y: {
-                    stacked: true,
-                    position: 'left',
-                    suggestedMax: 10,
-                    title: {
-                        display: true,
-                        text: 'Cantidad de envios'
-                    }
-                }
-            }
-        }
-    });
-}
-
-function generarBarraLenguajes(listaDatos){
-    const barraLenguaje = document.getElementById('barraLenguaje');
-    const myDiagramaBarrra = new Chart(barraLenguaje, {
-        type: 'bar',
-        data: {
-            labels: ['C','C++','Java','Python'],
-            datasets: [{
-                label: 'C',
-                data: [listaDatos[0],0,0,0],
-                backgroundColor: '#95a1f9'
-            },
-            {
-                label: 'C++',
-                data: [0,listaDatos[1],0,0],
-                backgroundColor: '#00129a'
-            },
-            {
-                label: 'Java',
-                data: [0,0,listaDatos[2],0],
-                backgroundColor: '#8e0000'
-            },
-            {
-                label: 'Python',
-                data: [,0,0,listaDatos[3]],
-                backgroundColor: '#fffc27'
-            }],
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    position: 'left',
-                    suggestedMax: 10,
-                    title: {
-                        display: true,
-                        text: 'Cantidad de envios'
-                    }
-                },
-                y: {
-                    stacked: true,
-                }
-            }
-        }
-    });
-}
-
-function generarBarraPreguntas(listaContador,problemas){
-    let listaCantidad = [];
-    for(let i=0;i<problemas.length;i++) listaCantidad.push(parseInt(listaContador[problemas[i].letra]));
-    const barraPreguntas = document.getElementById('barraPreguntas');
-    const myDiagramaBarrra = new Chart(barraPreguntas, {
-        type: 'bar',
-        data: {
-            labels: problemas.map((obj) => obj.letra),
-            datasets: [{
-                label: 'Preguntas',
-                data: listaCantidad,
-                backgroundColor: '#00062e'
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        title: tooltipProblema
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    suggestedMax: 10,
-                    position: 'left',
-                    title: {
-                        display: true,
-                        text: 'Cantidad de preguntas'
-                    }
-                },
-                y: {
-                    stacked: true,
-                }
-            }
-        }
-    });
-}
-
-function generarTiempoEnvios(){
-    var datos = {
-        idTorneo : idTorneo
-    };
-    $.ajax({
-        url: "../PHP/estadisticaTiempoEnvio.php",
-        type: "POST",
-        data: datos,
-        success: function(respuesta){
-            let resp = JSON.parse(respuesta)
-            if(resp.error){
-                cartelNotificacion(resp.mensaje);
-                console.log(resp.descripcion);
-            }
-            else{
-                let envios = resp.respuesta;
-                tiempoFin = parseInt(envios.tiempoFin/60);
-                tiempoEnvios(10,envios.tiempos);
-            }
-        }
-    });
-}
-
-function tiempoEnvios(intervalo,listaEnvio){
-    let labels = ['Inicio'];
-    let cantidades = [0];
-    let acu =  intervalo;
-    let cant = 0;
-    let i = 0;
-    while(acu < tiempoFin){
-        labels.push('de '+(acu-intervalo)+' a '+acu+' min');
-        while(i < listaEnvio.length && parseInt(listaEnvio[i]/60) < acu){
-            cant++;
-            i++;
-        }
-        cantidades.push(cant);
-        acu += intervalo;
-        cant = 0;
-    }
-    labels.push('de '+(acu-intervalo)+' a '+tiempoFin+' min');
-    while(i < listaEnvio.length && parseInt(listaEnvio[i]/60) <= tiempoFin){
-        cant++;
-        i++;
-    }
-    cantidades.push(0);
-    const lineaEnvios = document.getElementById('lineaEnvios');
-    const lineaEnviosTiempo = new Chart(lineaEnvios, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Envios',
-                data: cantidades,
-                backgroundColor: 'rgba(8, 0, 79, 0.62)',
-                fill: true,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointHoverRadius: 10
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        title: tooltipEnvios
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                },
-                y: {
-                    stacked: true,
-                    position: 'left',
-                    title: {
-                        display: true,
-                        text: 'Cantidad de envíos'
-                    }
-                }
-            }
-        }
-    });
-}
-
-function generarBarraPaises(datoPais){
-    const barraPaises = document.getElementById('barraPaises');
-    const myDiagramaPais = new Chart(barraPaises, {
-        type: 'bar',
-        data: {
-            labels: datoPais.paises,
-            datasets: [{
-                label: 'Paises',
-                data: datoPais.numero,
-                backgroundColor: '#696969',
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    suggestedMax: 10,
-                    position: 'left',
-                    title: {
-                        display: true,
-                        text: 'Cantidad de envios'
-                    }
-                },
-                y: {
-                    stacked: true
-                }
-            }
-        }
-    });
-}
-
-function tooltipProblema(context){
-    for(let i=0;i<arrayProblemas.length;i++){
-        if(arrayProblemas[i].letra == context[0].label){ 
-            return arrayProblemas[i].letra + ' : ' + arrayProblemas[i].titulo;
-        }
-    }
-    return 'Problema no definido';
-}
-
-function tooltipEnvios(context){
-    const [minutoInicio,minutoFinal] = context[0].label.split('a');
-    const mi = minutoInicio.replace("de ","");
-    const mf = minutoFinal.replace("min","");
-    return 'Durante el minuto '+mi+' y el minuto '+mf+' se realizaron';
-}
-
 function obtenerTorneo(){
     var datos = {
         idTorneo : idTorneo,
@@ -522,10 +104,10 @@ function obtenerInscriptos(){
             else{
                 participantes = resp.respuesta;
                 procesamientoDeDatosRespuesta("all");
+                cargarBotonesProblemas();
 
                 generarBarrasParaTiempo();
                 generarProblemasParaTiempo();
-                cargarBotonesProblemas();
                 procesamientoDeDatosTiempoGeneral();
                 procesamientoDeDatosTiempo("all");
 
@@ -533,6 +115,8 @@ function obtenerInscriptos(){
 
                 generarBarrasParaPaises();
                 procesamientoDeDatosPaises('all');
+
+                cargarDatosGenerales();
             }
         }
     });
@@ -681,7 +265,7 @@ function generarBarrasParaTiempo(){
                 <div class="contenedor-barra-punto">
                     <span class="contenido-etiqueta-low">
                         <i class="bi bi-clock"></i>
-                        ${i.toString().padStart(2, '0')}:00
+                        ${Math.floor(i/6).toString().padStart(2, '0')}:00
                     </span>
                     <div class="contenido-barra"></div>
                 </div>
@@ -719,6 +303,49 @@ function generarBarrasParaTiempo(){
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
+    console.log(envios);
+    let minimoFecha = new Date("10/10/2030");
+    let minimoEnvio = null;
+    let maximoFecha = new Date("10/10/2010");
+    let maximoEnvio = null;
+
+    envios.forEach(envio => {
+        const [dia, mes, año] = envio.fechaEnvio.split("-");
+        const [horas, minutos, segundos] = envio.horaEnvio.split(":");
+
+        const fechaEnvio = new Date(año, mes - 1, dia, horas, minutos, segundos);
+
+        if(fechaEnvio < minimoFecha){
+            minimoFecha = fechaEnvio;
+            minimoEnvio = envio;
+        }
+
+        if(fechaEnvio > maximoFecha){
+            maximoFecha = fechaEnvio;
+            maximoEnvio = envio;
+        }
+    });
+
+    const fechaInitTorneo = new Date(torneo.fechaInicio+' '+torneo.horaInicio);
+
+    const primerEnvioMinuto = document.querySelector(".minuto-primer-envio");
+    primerEnvioMinuto.innerHTML = Math.floor(Math.abs(fechaInitTorneo - minimoFecha) / 60000);
+
+    const primerEnvioProblema = document.querySelector(".problema-primer-envio");
+    primerEnvioProblema.innerHTML = minimoEnvio.titulo;
+
+    const primerEnvioUsuario = document.querySelector(".usuario-primer-envio");
+    primerEnvioUsuario.innerHTML = minimoEnvio.usuario;
+
+    const ultimoEnvioMinuto = document.querySelector(".minuto-ultimo-envio");
+    ultimoEnvioMinuto.innerHTML = Math.floor(Math.abs(fechaInitTorneo - maximoFecha) / 60000);
+
+    const ultimoEnvioProblema = document.querySelector(".problema-ultimo-envio");
+    ultimoEnvioProblema.innerHTML = maximoEnvio.titulo;
+
+    const ultimoEnvioUsuario = document.querySelector(".usuario-ultimo-envio");
+    ultimoEnvioUsuario.innerHTML = maximoEnvio.usuario;
 }
 
 function procesamientoDeDatosTiempo(problema){
@@ -753,6 +380,13 @@ function procesamientoDeDatosTiempo(problema){
         `;
         barra.setAttribute("data-bs-original-title",title)
     })
+    let promedio = 0;
+    arrayBarrasTiempos.forEach(v => { promedio += v.contador });
+
+    const promedioElemento1 = document.querySelector(".promedio-transcurso-torneo-1")
+    promedioElemento1.innerHTML = (promedio/arrayBarrasTiempos.length).toFixed(2)
+    const promedioElemento2 = document.querySelector(".promedio-transcurso-torneo-2")
+    promedioElemento2.innerHTML = (promedio/arrayBarrasTiempos.length).toFixed(2)
 }
 
 function procesamientoDeDatosTiempoGeneral(){
@@ -920,6 +554,21 @@ function procesamientoDeDatosPaises(problema){
 
         cantidad.innerHTML = arrayBarrasPaises[i].cantidad;
     });
+}
 
+function cargarDatosGenerales(){
+    const totalEnvios = document.querySelector(".total-envios-estadistica");
+    totalEnvios.innerHTML = envios.length;
 
+    const totalUsuarios = document.querySelector(".total-usuarios-estadistica");
+    totalUsuarios.innerHTML = participantes.length;
+
+    let totalAceptados = 0;
+    envios.forEach(e => {if(e.respuesta == 'Aceptado') totalAceptados++})
+
+    const totalProblemasResuelto = document.querySelector(".total-problemas-resuelto-estadistica");
+    totalProblemasResuelto.innerHTML = totalAceptados;
+
+    const totalPaises = document.querySelector(".total-paises-estadistica");
+    totalPaises.innerHTML = arrayBarrasPaises.length;
 }

@@ -23,7 +23,7 @@
         $idProblema = $_POST['idProblema'];
         $sql = "SELECT * FROM BD.problemas WHERE idProblema = $idProblema;";
         $resp = mysqli_query($conexion,$sql);
-        if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
+        if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos ","descripcion" => 'Query Error'.mysqli_error($conexion))));
         while($dato = mysqli_fetch_assoc($resp)){
             $descripcionRuta = "../Datos/Problemas/".$dato['idProblema']."/datos/descripcion.txt";
             $fpT = fopen($descripcionRuta,"r");

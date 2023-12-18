@@ -66,7 +66,7 @@
 
                 if(errorTiempoEjecucion($testTime)){
                     if(!unlink($testOut)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el archivo","descripcion" => "Error de eliminacion del archivo:".$testOut)));
-                    if(!unlink($testTime)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el archivo","descripcion" => "Error de eliminacion del archivo:".$testTime)));
+                    //if(!unlink($testTime)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el archivo","descripcion" => "Error de eliminacion del archivo:".$testTime)));
                     $bandera = false; 
                     $mensaje = "Error en Tiempo de Ejecucion";
                     continue;

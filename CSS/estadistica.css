@@ -100,11 +100,9 @@
     vertical-align: center;
     left: 33px;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.459);
-    color: white;
+    color: rgb(102, 102, 102);
     font-weight: bold;
-    font-size: 12px;
-    border-radius: 50%;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,14 +168,19 @@
 }
 
 .general-estadistica-contenedor {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .general-estadistica-contenedor > div {
-    max-width: 300px;
-    padding: 10px;
+    width: 270px;
+    height: 150px;
+    margin: 15px;
+    font-size: 24px;
+    padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -195,6 +198,41 @@
     margin-left: 2rem;
     justify-content: start;
 }
+
+.transcurso-torneo-datos {
+    flex-basis: 250px;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 410px;
+    margin-left: 1rem;
+    align-items: center;
+}
+
+.transcurso-torneo-datos .transcurso-p-data {
+    font-size: 14px;
+}
+
+.transcurso-torneo-datos .titulo-data{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.transcurso-torneo-datos .icon-datos {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    background-color: #65ccc3;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 25px;
+} 
 
 .contenedor-barra-tiempo {
     border-top: 0;
@@ -273,11 +311,10 @@
 }
 
 .problemas-barras-tiempo {
-    flex-basis: 250px;
-    flex-shrink: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
+    align-items: center;
 }
 
 .lenguaje-estadistica .contenedor-barra-lenguaje {

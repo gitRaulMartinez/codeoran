@@ -9,7 +9,11 @@
     <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <!-- Estilos CSS Enlaces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="../CSS/animate.min.css">
     <link rel="stylesheet" href="../Frameworks/Bootstrap/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="../Frameworks/Bootstrap-icons/bootstrap-icons.css"></link>
@@ -56,41 +60,27 @@
     </header>
     <main class="seccion">
         <div class="contenido-v2">
-            <div class="contenido-texto-inicio">
-                <div class="contenido-titulo">
-                    <h1 class="titulo-inicio">Bievenido a <br>Code Orán</h1>
-                    <img src="../Imagenes/dom.png" alt="Logo Code Oran" class="imagen-inicio">
-                </div>
-                <p class="parrafo-inicio">Code Oran es un sitio donde podrás participar de torneos relacionados con la programación competitiva resolviendo distintos problemas computacionales, matemáticos y lógicos ¿Estás listo?. </p>
+            <h1 class="titulo-inicio">Explora el mundo de la programación competitiva en Code Oran</h1>
+            <p class="parrafo-inicio">Comienza aquí. ¡Regístrate ahora y únete a la competición en Code Oran!</p>
+            <div class="d-flex justify-content-center align-items-center mt-5">
+                <button type="button" class="btn btn-outline-dark btn-lg me-3" data-bs-toggle="modal" data-bs-target="#modalIniciarSesion">Iniciar Sesión</button>
+                <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrarme</button>
             </div>
         </div>
-        <div class="contenido-v2 color-oscuro" >
-            <div class="contenido-texto-inicio text-white ms-auto">
+        <div class="contenido-v2" >
+            <div class="contenido-texto-inicio">
                 <div class="contenido-titulo">
                     <h2 class="titulo-inicio">¿Que es la Programación Competitiva?</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-laptop" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.0" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <line x1="3" y1="19" x2="21" y2="19" />
-                        <rect x="5" y="6" width="14" height="10" rx="1" />
-                    </svg>
                 </div>
-                <p class="parrafo-inicio">La programación competitiva es un deporte mental donde los concursantes compiten entre sí para resolver un conjunto de problemas de programación en un tiempo limitado.
-                    Cada competición o torneo está compuesto por un conjunto de problemas, este número puede variar así como también su duración.</p>
+                <p class="parrafo-inicio">
+                    La programación competitiva se define como un desafío mental, donde los participantes compiten entre sí para resolver un conjunto de problemas de programación en un tiempo determinado. Cada competición o torneo consta de un conjunto variable de problemas, con su número y duración sujetos a variación.
+                </p>
             </div>
         </div>
         <div class="contenido-v2" >
             <div class="contenido-texto-inicio">
                 <div class="contenido-titulo">
                     <h2 class="titulo-inicio">Torneos</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trophy" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <line x1="8" y1="21" x2="16" y2="21" />
-                        <line x1="12" y1="17" x2="12" y2="21" />
-                        <line x1="7" y1="4" x2="17" y2="4" />
-                        <path d="M17 4v8a5 5 0 0 1 -10 0v-8" />
-                        <circle cx="5" cy="9" r="2" />
-                        <circle cx="19" cy="9" r="2" />
-                    </svg>
                 </div>
                 <p class="parrafo-inicio">Encontrarás distintos torneos en los que podrás participar virtualmente, cada torneo cuenta un set de problemas y un tiempo de duración, el cual deberás resolver la mayor cantidad de problemas en el menor tiempo posible.</p>
             </div>
@@ -99,11 +89,8 @@
         <div class="toast-container contenedor-de-notificacion" id="notificaciones"></div>
 
         <div id="modalRegistro"></div>
-
         <div id="modalSesion"></div>
-
         <div id="modalActivacion"></div>
-
         <div id="modalRecuperarContra"></div>
     </main>
 

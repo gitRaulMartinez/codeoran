@@ -765,8 +765,6 @@ function cargarEnvios(){
     });
     $("div.filtrosEnvios").html('<div class="btn-group my-2" role="group" aria-label="Basic example"><button class="btn btn-primary px-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFiltroEnvio" aria-controls="offcanvasRight">Filtros</button><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEnvioTorneo">Enviar <i class="bi bi-file-earmark-arrow-up"></i></button></div>');
     $("div.dataTables_length").addClass("my-2");
-
-    setTimeout(function(){tableEnvio.ajax.reload(null, false);},30000); 
 }
 
 function enviarProblema(){
@@ -789,11 +787,12 @@ function enviarProblema(){
                 myModalEnvioTorneo.hide();
             }
             else{
+                tableEnvio.ajax.reload(null, false);
+                cartelNotificacion(resp.mensaje);
+                myModalEnvioTorneo.hide();
                 if(resp.envio){
                     juez(resp.idEnvio);
                 }
-                cartelNotificacion(resp.mensaje);
-                myModalEnvioTorneo.hide();
             }
         }
     });

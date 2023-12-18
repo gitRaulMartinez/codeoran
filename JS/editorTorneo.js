@@ -10,9 +10,10 @@ var ventanaErrorGenerar;
 var ventanaBorrarCasosTodos;
 var myModalVerCasos;
 var myModalCrearProblema;
-var myModalSubirCasos; 
+var myModalSubirCasos;
 var archivoSolucion;
 var tableCasos;
+var templateProblemas;
 var banderaSinGuardar = false;
 
 $(document).ready(function(){
@@ -428,27 +429,47 @@ function cargarDatosProblemas(){
                 console.log(resp.descripcion);
             }
             else{
-                let template = '';
-                let templateSelect = '';
-                resp.lista.forEach(problema => {
-                    template += `
-                        <button type="button" class="btn btn-outline-dark text-truncate w-100 mb-2 cargarProblema" idProblema="${problema.idProblema}" title="${problema.titulo}" problema=" - ${problema.titulo}">${problema.letra}</button>
+                const loadinProblema = document.getElementById("loadingProblema");
+                loadinProblema.classList.add("d-none");
+                const listaProblema = document.getElementById("listaProblema");
+                listaProblema.classList.remove("d-none");
+                templateProblemas = '';
+                resp.lista.forEach((problema, index) => {
+                    templateProblemas += `
+                        <button type="button" class="btn btn-outline-dark mb-2 d-flex justify-content-between align-items-center cargarProblema-action problema-clase-${problema.idProblema}" idProblema="${problema.idProblema}" title="${problema.titulo}">
+                            <div class="boton-problema-up invisible me-1"><i class="bi bi-arrow-up icono"></i></div>
+                            <span class="cargarProblema text-truncate flex-grow-1" problema=" - ${problema.titulo}">${problema.letra}</span>
+                            <div class="boton-problema-down invisible ms-1"><i class="bi bi-arrow-down icono"></i></div>
+                        </button>
                     `;
-                    templateSelect += "<option value="+problema.letra+">"+problema.letra+"</option>";
                 });
-                $("#cargarProblemas").html(template);
-                $("#problemaEditarEtiqueta").html(templateSelect);
+                $("#cargarProblemas").html(templateProblemas);
+                $("#problemaEditarEtiqueta").val();
                 $("#problema-guardar").prop('disabled',true);
                 $("#problema-eliminar").prop('disabled',true);
                 $('#archivo-envio-solucion').fileinput('lock');
                 $("#subir-casos-prueba-btn").prop('disabled',true);
-                if($("#id-problema-cargar").attr("idProblema")!="") cargarProblema($("#id-problema-cargar").attr("idProblema"));
+                
+
+                if(resp.lista.length == 0){
+                    const p = document.querySelector("#listaProblema p");
+                    p.classList.remove("d-none")
+
+                    const editorProblema = document.getElementById("editorProblema");
+                    editorProblema.classList.add("d-none");
+                }
+                else{
+                    const editorProblema = document.getElementById("editorProblema");
+                    editorProblema.classList.remove("d-none");
+                    if($("#id-problema-cargar").attr("idProblema")!="") cargarProblema($("#id-problema-cargar").attr("idProblema"));
+                    else cargarProblema(resp.lista[0].idProblema);
+                }
             }
         }
     });
 }
 
-$(document).on('click', '.cargarProblema', function(){
+$(document).on('click', '.cargarProblema-action', function(){
     let element = $(this)[0];
     if(!$(element).hasClass("active")){
         let idProblema = $(element).attr('idProblema');
@@ -485,6 +506,58 @@ $(document).on('click', '.cargarProblema', function(){
     }
 });
 
+$(document).on('click', '.boton-problema-up', function(event){
+    event.stopPropagation();
+    let bloque = null;
+    sinGuardar();
+    if(event.target.classList.contains("icono")) bloque = event.target.parentNode;
+    else bloque = event.target;
+    const bloqueActual = bloque.parentNode;
+    const bloqueAnterior = bloqueActual.previousElementSibling;
+    if(bloqueAnterior){
+        bloqueActual.parentNode.insertBefore(bloqueActual, bloqueAnterior);
+
+        let temp = bloqueActual.querySelector(".cargarProblema").innerHTML;
+        bloqueActual.querySelector(".cargarProblema").innerHTML = bloqueAnterior.querySelector(".cargarProblema").innerHTML;
+        bloqueAnterior.querySelector(".cargarProblema").innerHTML = temp;
+
+        $("#problemaEditarEtiqueta").val(bloqueActual.querySelector(".cargarProblema").innerHTML);
+
+        if(!bloqueActual.previousElementSibling){
+            bloqueActual.querySelector(".boton-problema-up").classList.add("invisible");
+        }
+        else{
+            bloqueActual.querySelector(".boton-problema-down").classList.remove("invisible");
+        }
+    }
+});
+
+$(document).on('click', '.boton-problema-down', function(event){
+    event.stopPropagation();
+    let bloque = null;
+    sinGuardar();
+    if(event.target.classList.contains("icono")) bloque = event.target.parentNode;
+    else bloque = event.target;
+    const bloqueActual = bloque.parentNode;
+    const bloqueSiguiente = bloqueActual.nextElementSibling;
+    if(bloqueSiguiente){
+        bloqueActual.parentNode.insertBefore(bloqueSiguiente, bloqueActual);
+
+        let temp = bloqueActual.querySelector(".cargarProblema").innerHTML;
+        bloqueActual.querySelector(".cargarProblema").innerHTML = bloqueSiguiente.querySelector(".cargarProblema").innerHTML;
+        bloqueSiguiente.querySelector(".cargarProblema").innerHTML = temp;
+
+        $("#problemaEditarEtiqueta").val(bloqueActual.querySelector(".cargarProblema").innerHTML);
+
+        if(!bloqueActual.nextElementSibling){
+            bloqueActual.querySelector(".boton-problema-down").classList.add("invisible");
+        }
+        else{
+            bloqueActual.querySelector(".boton-problema-up").classList.remove("invisible");
+        }
+    }
+});
+
 function cargarProblema(idProblema){
     var datos = {
         idProblema: idProblema,
@@ -496,6 +569,10 @@ function cargarProblema(idProblema){
         type: "POST",
         data: datos,
         success: function(respuesta){
+            const editorProblema = document.getElementById("editorProblema");
+            editorProblema.classList.remove("d-none");
+            const p = document.querySelector("#listaProblema p");
+            if (!p.classList.contains("d-none")) p.classList.add("d-none");
             let resp = JSON.parse(respuesta);
             if(resp.error){
                 cartelNotificacion(resp.mensaje);
@@ -503,13 +580,13 @@ function cargarProblema(idProblema){
             }
             else{
                 let problema = resp.datos;
-                console.log(problema);
                 $("#problemaEditarTitulo").val(problema.titulo);
                 $("#problemaEditarEtiqueta").val(problema.letra);
                 $("#problemaEditarLimite").val(problema.limite);
                 editorDescripcion.setData(problema.descripcion);
                 editorEntrada.setData(problema.entrada);
                 editorSalida.setData(problema.salida);
+                
                 switch(problema.ext){
                     case "c":   $("#logo-lenguaje").prop('src',"../Imagenes/c.png");
                                 $("#codigo-solucion-subido").html(problema.archivo);
@@ -559,15 +636,13 @@ function cargarProblema(idProblema){
                 else{
                     $("#borrar-todo-casos").prop('disabled',true);
                 }
-
                 tableCasos.draw();
-
+                $("#cargarProblemas").html(templateProblemas);
                 cargarSelectTestPublico(ns,parseInt(problema.testPublico));
-
                 (problema.ext != "") ? $("#eliminar-codigo-solucion").prop("disabled",false) : $("#eliminar-codigo-solucion").prop("disabled",true);
-                $(".cargarProblema").removeClass("active");
-                $('.cargarProblema[idProblema='+idProblema+']').addClass("active");  
-                
+                $(".cargarProblema-action").removeClass("active");
+                $(".cargarProblema-action div").addClass("invisible");
+                $(`.cargarProblema-action[idProblema=${idProblema}]`).addClass("active");  
                 $("#subir-casos-prueba-btn").prop('disabled',false);
                 $('#archivo-envio-solucion').fileinput('unlock');
                 $("#problema-eliminar").prop('disabled',false);
@@ -575,6 +650,20 @@ function cargarProblema(idProblema){
                 $("#id-problema-cargar").attr('idProblema',problema.idProblema);
                 $("#problema-guardar").prop('disabled',true);
                 banderaSinGuardar = false;
+                
+                botonActual = document.querySelector(`.problema-clase-${idProblema}`);
+                if(!botonActual.previousElementSibling){
+                    if(botonActual.querySelector(".boton-problema-down")) botonActual.querySelector(".boton-problema-down").classList.remove("invisible");
+                }
+                else{
+                    if(!botonActual.nextElementSibling){
+                        if(botonActual.querySelector(".boton-problema-up")) botonActual.querySelector(".boton-problema-up").classList.remove("invisible");
+                    }
+                    else{
+                        if(botonActual.querySelector(".boton-problema-down")) botonActual.querySelector(".boton-problema-down").classList.remove("invisible");
+                        if(botonActual.querySelector(".boton-problema-up")) botonActual.querySelector(".boton-problema-up").classList.remove("invisible");
+                    }
+                }
             }
         }
     });
@@ -585,8 +674,6 @@ function crearProblema(){
     if(titulo != ""){
         var exp = new RegExp(/^[A-Za-z0-9À-ÿ\u00f1\u00d1\s]+$/g);
         if(exp.test(titulo)){
-            if(($("#cargarProblemas button")).length) $("#cargarProblemas button:last").after($("<button type='button' class='btn btn-outline-dark text-truncate w-100 mb-2 cargandoProblema' title='Cargando problema...' problema='Creando problema     '><div class='spinner-border spinner-border-sm' role='status'></div></button>"));
-            else $("#cargarProblemas").html("<button type='button' class='btn btn-outline-dark text-truncate w-100 mb-2 cargandoProblema' title='Cargando problema...' problema='Creando problema     '><div class='spinner-border spinner-border-sm' role='status'></div></button>");
             var datos = {
                 idTorneo : idTorneo,
                 titulo: titulo
@@ -603,15 +690,15 @@ function crearProblema(){
                         console.log(resp.descripcion);
                     }
                     else{
-                        if(($("#problemaEditarEtiqueta option")).length) $("#problemaEditarEtiqueta option:last").after("<option value"+resp.letra+">"+resp.letra+"</option>");
-                        else $("#problemaEditarEtiqueta").html("<option value"+resp.letra+">"+resp.letra+"</option>");
-                        let nuevoProblema = $("#cargarProblemas .cargandoProblema");
-                        nuevoProblema.removeClass("cargandoProblema");
-                        nuevoProblema.addClass("cargarProblema");
-                        nuevoProblema.attr("idProblema",resp.idProblema);
-                        nuevoProblema.html(resp.letra);
-                        nuevoProblema.attr("title",titulo);
-                        nuevoProblema.attr("problema"," - "+titulo);
+                        $("#problemaEditarEtiqueta").html(resp.letra);
+                        const nuevoProblemaHTML = `
+                            <button type="button" class="btn btn-outline-dark mb-2 d-flex justify-content-between align-items-center cargarProblema-action problema-clase-${resp.idProblema}" idProblema="${resp.idProblema}" title="${titulo}">
+                                <div class="boton-problema-up d-none me-1"><i class="bi bi-arrow-up icono"></i></div>
+                                <span class="cargarProblema text-truncate flex-grow-1" problema=" - ${titulo}">${resp.letra}</span>
+                                <div class="boton-problema-down d-none ms-1"><i class="bi bi-arrow-down icono"></i></div>
+                            </button>
+                        `;
+                        templateProblemas += nuevoProblemaHTML;
                         cartelNotificacion(resp.mensaje);
                         cargarProblema(resp.idProblema);
                     }
@@ -713,6 +800,7 @@ $(document).on('click', '#problema-eliminar', function(){
 function eliminarProblema(idProblema){
     var datos = {
         idProblema: idProblema,
+        idTorneo: idTorneo,
         metodo: "eliminar"
     }
     $.ajax({

@@ -164,6 +164,7 @@
         }
     }
     */
+    /*
     $usuario = 'gokuLoco';
     $idEnvio = '252';
 
@@ -188,7 +189,15 @@
         echo $penalizacion*numeroDeRespuestasFallidas($conexion,$idProblema,$usuario)."<br>";
         echo $tiempoTotal;
     }
-
-
+    */
+    /*
     mail("rauldeoran17@gmail.com","asuntillo","Este es el cuerpo del mensaje") 
+    */
+    putenv("LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu");
+    
+    echo "Variables de entorno:\n";
+    print_r($_ENV);
+
+    echo "Usuario que ejecuta el script:\n";
+    echo exec('whoami');
 ?>

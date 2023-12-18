@@ -14,7 +14,13 @@
     $arreglo["data"] = [];
     while($dato = mysqli_fetch_array($resp)){
         $fila = [];
-        $fila []= $dato['usuarioResultado'];
+        if($dato['usuarioResultado'] == $usuario){
+            $fila []= $dato['usuarioResultado']." (Yo)";
+        }
+        else{
+            $fila []= $dato['usuarioResultado'];
+        }
+        
         $fila []= $dato['paisResultado'];
         $sqlProblemas = "SELECT idProblema FROM BD.problemas WHERE torneo = $idTorneo;";
         $respProblemas = mysqli_query($conexion,$sqlProblemas);

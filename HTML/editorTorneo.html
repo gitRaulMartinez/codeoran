@@ -70,7 +70,7 @@
         </nav>
     </header>
     <main class="seccion">
-        <div class="card m-5 sombraTable" style="width: 100%;">
+        <div class="card mt-5 mb-3 sombraTable" style="width: 100%;">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <span>Configuración datos del torneo</span>
@@ -79,52 +79,48 @@
                     <button type="button" class="btn btn-primary ml-1" onclick="guardarDatosTorneo();">Guardar</button>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="configuracion-datos-torneo mb-3">
-                    <div class="w-100 columna-dato-1-torneo">
-                        <label for="">Nombre:</label>
-                        <input type="text" class="form-control" placeholder="Nombre de torneo" id="nombreTorneoEditor" onkeyup="limpiarInput('nombreTorneoEditor')">
-                        <div class="invalid-feedback" id="cartelTorneoEditorNombre"></div>
-                    </div>
-                    <div class="w-100">
-                        <label for="">Duración:</label>
-                        <input type="time" class="form-control" id="duracionTorneoEditor" onkeyup="limpiarInput('duracionTorneoEditor')">
-                        <div class="invalid-feedback" id="cartelTorneoEditorDuracion"></div>
-                    </div>
+            <div class="card-body contenedor-datos-torneo">
+                <div class="w-100 columna-dato-1-torneo">
+                    <label for="">Nombre:</label>
+                    <input type="text" class="form-control" placeholder="Nombre de torneo" id="nombreTorneoEditor" onkeyup="limpiarInput('nombreTorneoEditor')">
+                    <div class="invalid-feedback" id="cartelTorneoEditorNombre"></div>
                 </div>
-                <div class="configuracion-datos-torneo mb-3">
-                    <div class="w-100 columna-dato-1-torneo">
-                        <label for="">Fecha de inicio del torneo:</label>
-                        <input type="date" class="form-control" id="fechaTorneoEditor" onkeyup="limpiarInput('fechaTorneoEditor')">
-                        <div class="invalid-feedback" id="cartelTorneoEditorFechaInicio"></div>
-                    </div>
-                    <div class="w-100">
-                        <label for="">Tiempo de penalización (Minutos):</label>
-                        <input type="input" class="form-control" id="penalTorneoEditor" onkeyup="limpiarInput('penalTorneoEditor')">
-                        <div class="invalid-feedback" id="cartelTorneoEditorTiempoPenalizacion"></div>
-                    </div>
+                <div class="w-100">
+                    <label for="">Duración:</label>
+                    <input type="time" class="form-control" id="duracionTorneoEditor" onkeyup="limpiarInput('duracionTorneoEditor')">
+                    <div class="invalid-feedback" id="cartelTorneoEditorDuracion"></div>
                 </div>
-                <div class="configuracion-datos-torneo mb-3">
-                    <div class="w-100 columna-dato-1-torneo">
-                        <label for="">Hora de inicio del torneo:</label>
-                        <input type="time" class="form-control" id="horaTorneoEditor" onkeyup="limpiarInput('horaTorneoEditor')">
-                        <div class="invalid-feedback" id="cartelTorneoEditorHoraInicio"></div>
-                    </div>
-                    <div class="w-100">
-                        <label for="selectTorneoEditor">Nivel del torneo:</label>
-                        <select id="selectTorneoEditor" class="form-select w-100" aria-label="Default select example">
-                            <!-- <option value="0">Bloqueado</option> -->
-                            <option value="1">Pausado</option>
-                            <option value="2">Publico</option>
-                        </select>
-                    </div>
+                <div class="w-100 columna-dato-1-torneo">
+                    <label for="">Fecha de inicio del torneo:</label>
+                    <input type="date" class="form-control" id="fechaTorneoEditor" onkeyup="limpiarInput('fechaTorneoEditor')">
+                    <div class="invalid-feedback" id="cartelTorneoEditorFechaInicio"></div>
+                </div>
+                <div class="w-100">
+                    <label for="">Tiempo de penalización (Minutos):</label>
+                    <input type="number" class="form-control" id="penalTorneoEditor" onkeyup="limpiarInput('penalTorneoEditor')">
+                    <div class="invalid-feedback" id="cartelTorneoEditorTiempoPenalizacion"></div>
+                </div>
+                <div class="w-100 columna-dato-1-torneo">
+                    <label for="">Hora de inicio del torneo:</label>
+                    <input type="time" class="form-control" id="horaTorneoEditor" onkeyup="limpiarInput('horaTorneoEditor')">
+                    <div class="invalid-feedback" id="cartelTorneoEditorHoraInicio"></div>
+                </div>
+                <div class="w-100">
+                    <label for="selectTorneoEditor">Estado del torneo:</label>
+                    <select id="selectTorneoEditor" class="form-select w-100" aria-label="Default select example">
+                        <!-- <option value="0">Bloqueado</option> -->
+                        <option value="1">Pausado</option>
+                        <option value="2">Publico</option>
+                    </select>
                 </div>
             </div>
+        </div>
+        <div class="card sombraTable" style="width: 100%;">
             <div class="card-header borde-arriba">
                 <span>Problemas</span>
             </div>
-            <div class="card-body d-flex flex-row">
-                <div class="w-100 me-3">
+            <div class="card-body d-flex flex-row justify-content-center" id="contenedorEditorProblema">
+                <div class="w-100 me-3 d-none" id="editorProblema">
                     <div class="contenedor-header-editar-problema">
                         <div class="titulo-botones-problemas">
                             <h6 class="card-title mb-0 text-truncate text-nowrap" id="id-problema-editor">Ningún problema seleccionado</h6>
@@ -139,19 +135,19 @@
                     </div>
                     <div>
                         <div class="my-3">
-                            <label for="" class="form-label">Título:</label>
+                            <label for="cartelProblemaEditorTitulo" class="form-label">Título:</label>
                             <input type="text" class="form-control inputResponsivo" id="problemaEditarTitulo" onkeyup="limpiarInput('problemaEditarTitulo')">
                             <div class="invalid-feedback" id="cartelProblemaEditorTitulo"></div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-end mb-3">
+                        <div class="d-flex justify-content-between align-items-stretch mb-3">
                             <div class="me-5">
-                                <label for="" class="form-label text-nowrap text-truncate">Tiempo Limite (Segundos):</label>
-                                <input type="text" class="form-control" id="problemaEditarLimite" onkeyup="limpiarInput('problemaEditarLimite')">
+                                <label for="problemaEditarLimite" class="form-label text-nowrap text-truncate">Tiempo Limite (Segundos):</label>
+                                <input type="number" class="form-control" id="problemaEditarLimite" onkeyup="limpiarInput('problemaEditarLimite')">
                                 <div class="invalid-feedback" id="cartelProblemaEditorLimite"></div>
                             </div>
-                            <div>
-                                <label for="" class="form-label">Etiqueta:</label>
-                                <select class="form-select" id="problemaEditarEtiqueta"></select>
+                            <div class="d-flex flex-column justify-content-between align-items-start">
+                                <label for="problemaEditarEtiqueta" class="form-label text-nowrap text-truncate">Problema:</label>
+                                <input class="form-control ancho-100" id="problemaEditarEtiqueta" readonly>
                             </div>
                         </div>
                     </div>
@@ -217,7 +213,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="columna-problemas-editor">
+                <div class="columna-problemas-editor d-none" id="listaProblema">
+                    <p class="d-none">No se encontro ningún problema</p>
                     <div class="contenedor-problemas">
                         <div class="d-flex flex-column" id="cargarProblemas">
                             <div class="cargando-problemas-columna my-1">
@@ -226,6 +223,12 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary w-100 mb-2 text-truncate boton-crear-problema" data-bs-toggle="modal" data-bs-target="#modalCrearProblema" title="Crear Problema"></button>
+                    </div>
+                </div>
+                <div id="loadingProblema">
+                    <div class="cargando-problemas-columna my-1">
+                        <strong class="text-cargando-problemas me-2"></strong>
+                        <div class="spinner-border" role="status" aria-hidden="true" title="Cargando problemas..."></div>
                     </div>
                 </div>
             </div>
