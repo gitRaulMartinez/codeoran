@@ -206,8 +206,8 @@ function cargarTorneos(){
                 console.log(json);
                 json.data.forEach(torneo => {
                     if(torneo.estado != 2){
-                        let fecha = torneo.fechaInicio.split('-');
-                        const fechaInicio = fecha[2]+'-'+fecha[1]+'-'+fecha[0]
+                        const fechaInicio = torneo.fechaInicio;
+                        console.log(fechaInicio);
                         arrayTorneos.push({id: torneo.idTorneo, estado: torneo.estado, fechaInicio: fechaInicio+' '+torneo.horaInicio, fechaFin: torneo.fechaFin});
                     }
                 });
@@ -244,12 +244,10 @@ function cargarTorneos(){
         ,
         "order": [[ 2, "desc" ]]
         ,
-        columnDefs: [ 
+        columnDefs: [
             {
-                targets: [2],
-                orderData: [2, 3],
-                type: 'date',
-                dateFormat: 'DD-MM-YYYY'
+                targets: 2,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
             },
             { responsivePriority: 1, targets: [1,7] },
             { responsivePriority: 2, targets: [6] },
@@ -298,7 +296,7 @@ function cargarTorneos(){
 
 function busquedaFechaFiltro(settings, data, dataIndex){
     let fecha = data[2].split('-')
-    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
+    var date = new Date(fecha[2]+'/'+fecha[1]+'/'+fecha[0]);
     if(( minFecha <= date  && date <= maxFecha )) return true;
     return false;
 }

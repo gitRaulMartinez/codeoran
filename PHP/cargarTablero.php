@@ -22,7 +22,7 @@
         }
         
         $fila []= $dato['paisResultado'];
-        $sqlProblemas = "SELECT idProblema FROM BD.problemas WHERE torneo = $idTorneo;";
+        $sqlProblemas = "SELECT idProblema FROM BD.problemas WHERE torneo = $idTorneo ORDER BY letra;";
         $respProblemas = mysqli_query($conexion,$sqlProblemas);
         if(!$respProblemas) die("Error Consulta de datos: ".mysqli_error($conexion));
         $totalRespuestasCorrectas = 0;

@@ -6,7 +6,7 @@
     if(isset($_SESSION['usuario'])) $usuario = $_SESSION['usuario'];
     else die(json_encode(array("error" => true,"mensaje" => "Error de sesion","descripcion" => "Error ningun usuario logueado")));
     $idTorneo = $_POST['idTorneo'];
-    $sql = "SELECT idPregunta,usuario,pregunta,titulo,letra,responde,DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha FROM BD.preguntas INNER JOIN BD.problemas ON problema = idProblema AND torneo = $idTorneo WHERE responde is null AND usuario = '$usuario' ORDER BY idPregunta DESC;";
+    $sql = "SELECT idPregunta,usuario,pregunta,titulo,letra,responde,fecha FROM BD.preguntas INNER JOIN BD.problemas ON problema = idProblema AND torneo = $idTorneo WHERE responde is null AND usuario = '$usuario' ORDER BY idPregunta DESC;";
     $resp = mysqli_query($conexion,$sql);
     if(!$resp) die("Error Consulta de datos: ".mysqli_error($conexion));
     $arreglo["data"] = [];
@@ -37,7 +37,7 @@
 
         $arreglo["data"] []= $data;
     }
-    $sql = "SELECT idPregunta,usuario,pregunta,titulo,letra,responde,DATE_FORMAT(fecha, '%d-%m-%Y %H:%i:%s') AS fecha FROM BD.preguntas INNER JOIN BD.problemas ON problema = idProblema AND torneo = $idTorneo WHERE responde is null AND usuario != '$usuario' ORDER BY idPregunta DESC;";
+    $sql = "SELECT idPregunta,usuario,pregunta,titulo,letra,responde,fecha FROM BD.preguntas INNER JOIN BD.problemas ON problema = idProblema AND torneo = $idTorneo WHERE responde is null AND usuario != '$usuario' ORDER BY idPregunta DESC;";
     $resp = mysqli_query($conexion,$sql);
     if(!$resp) die("Error Consulta de datos: ".mysqli_error($conexion));
     while($data = mysqli_fetch_assoc($resp)){

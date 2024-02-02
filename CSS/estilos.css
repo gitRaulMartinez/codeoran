@@ -1756,6 +1756,18 @@
     padding: 0 100px;
 }
 
+.contenido-v2 .imagen-front {
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+}
+
+.contenido-v2 .with-imagen {
+    max-width: 600px;
+    width: 100%;
+    align-self: flex-start;
+}
+
 .imagen-inicio {
     width: 60px;
 }
@@ -1772,6 +1784,7 @@
 .parrafo-inicio {
     font-size: 1.7rem;
     font-weight: 100;
+    width: 100%;
 }
 
 .contenido-imagen {
@@ -1861,6 +1874,18 @@
 
 .cargarProblema-action {
     position: relative;
+}
+
+.content-transcurso-torneo-estilo {
+    overflow-y: hidden;
+    overflow-x: auto;
+    flex-grow: 1;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* Responsive */

@@ -291,10 +291,7 @@ function registrarDatos(){
                     console.log(resp.descripcion);
                 }
                 else{
-                    $("#boton-registrarse").prop('disabled',false);
-                    $("#boton-registrarse").html("Registrarse");
                     envioCorreoRegistro();
-                    location.reload();
                 }
             }
         });
@@ -385,7 +382,7 @@ function controlPass2(){
 
 function controlEmail(){
     if(document.getElementById("correo").value!=""){
-        let regEmail = /^\w+(\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let regEmail = /^[\w.+-]+@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         var validacionCorreo = document.getElementById("correo").value;
         if(!regEmail.test(validacionCorreo)){
             cartelInput("correo",false,"errorMensajeEmail","El formato ingresado no es correcto");
@@ -565,8 +562,14 @@ function envioCorreoRegistro(){
                 cartelNotificacion(resp.mensaje);
                 console.log(resp.descripcion);
             }
+            else{
+                $("#boton-registrarse").prop('disabled',false);
+                $("#boton-registrarse").html("Registrarse");
+                location.reload();
+            }
         }
     });
+    
 }
 
 function verificarUsuarioExistente(){

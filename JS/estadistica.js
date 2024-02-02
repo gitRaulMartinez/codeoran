@@ -182,7 +182,7 @@ function procesamientoDeDatosRespuesta(problema){
     participacion.innerHTML = Math.round((listaParticipantes.length/participantes.length) * 100) + ' %';
 
     const promedio = document.querySelector(".promedio-respuesta");
-    promedio.innerHTML = contador / listaParticipantes.length;
+    promedio.innerHTML = (contador / listaParticipantes.length).toFixed(2);
 
     const respuestaA = document.querySelector(".respuesta-a");
     respuestaA.innerHTML = Math.round((arrayRespuestaEnvioTotal['A'] / contador) * 100)+" %";
@@ -311,7 +311,7 @@ function generarBarrasParaTiempo(){
     let maximoEnvio = null;
 
     envios.forEach(envio => {
-        const [dia, mes, año] = envio.fechaEnvio.split("-");
+        const [año, mes, dia] = envio.fechaEnvio.split("-");
         const [horas, minutos, segundos] = envio.horaEnvio.split(":");
 
         const fechaEnvio = new Date(año, mes - 1, dia, horas, minutos, segundos);
@@ -352,7 +352,7 @@ function procesamientoDeDatosTiempo(problema){
     arrayBarrasTiempos.forEach(barra => { barra.contador = 0})
     envios.forEach(envio => {
         if (problema == "all" || problema == envio.problema) {
-            const [dia, mes, año] = envio.fechaEnvio.split("-");
+            const [año, mes, dia] = envio.fechaEnvio.split("-");
             const [horas, minutos, segundos] = envio.horaEnvio.split(":");
 
             const fechaEnvio = new Date(año, mes - 1, dia, horas, minutos, segundos);
@@ -369,6 +369,7 @@ function procesamientoDeDatosTiempo(problema){
     barras.forEach((barra,i) => {
         const porcentaje = (arrayBarrasTiempos[i].contador / arrayBarrasTiemposMaximo) * 100;
         barra.style.height = (porcentaje / 100) * 380 + 'px';
+        console.log(porcentaje);
 
         const hMin = arrayBarrasTiempos[i].fechaMin.getHours().toString().padStart(2, '0');
         const mMin = arrayBarrasTiempos[i].fechaMin.getMinutes().toString().padStart(2, '0');
@@ -392,7 +393,7 @@ function procesamientoDeDatosTiempo(problema){
 function procesamientoDeDatosTiempoGeneral(){
     arrayBarrasTiempos.forEach(barra => { barra.contador = 0})
     envios.forEach(envio => {
-        const [dia, mes, año] = envio.fechaEnvio.split("-");
+        const [año, mes, dia] = envio.fechaEnvio.split("-");
         const [horas, minutos, segundos] = envio.horaEnvio.split(":");
 
         const fechaEnvio = new Date(año, mes - 1, dia, horas, minutos, segundos);
@@ -407,6 +408,7 @@ function procesamientoDeDatosTiempoGeneral(){
     for(let i=0;i<arrayBarrasTiempos.length;i++){
         arrayBarrasTiemposMaximo = Math.max(arrayBarrasTiemposMaximo,arrayBarrasTiempos[i].contador)
     }
+    console.log("valor maximo",arrayBarrasTiempos);
     const barras = document.querySelectorAll(".contenedor-barra-tiempo .contenedor-barra-t .contenido-barra-general");
     barras.forEach((barra,i) => {
         const porcentaje = (arrayBarrasTiempos[i].contador / arrayBarrasTiemposMaximo) * 100;

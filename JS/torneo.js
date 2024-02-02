@@ -71,6 +71,7 @@ function cargarDatosTorneo(){
                 datosTorneo = {estado: resp.estado, fechaInicio: resp.fechaInicio, fechaFin: resp.fechaFin};
                 if(resp.nombre != $("#torneoNombreMenu")) $("#torneoNombreMenu").html(resp.nombre+' <i class="bi bi-layout-sidebar-reverse"></i>');
                 if(resp.nombre != $("#nombreTorneoOffCanvas").html()) $("#nombreTorneoOffCanvas").html(resp.nombre);
+                if(document.getElementById("titulo-torneo-tablero")) document.getElementById("titulo-torneo-tablero").innerHTML = resp.nombre
                 if(parseInt(resp.posicion) != parseInt($("#posicionTabla").html())) $("#posicionTabla").html(resp.posicion);
                 if(parseInt(resp.totalAceptado) != parseInt($("#numeroDeProblemasCorrectos").html())) $("#numeroDeProblemasCorrectos").html(resp.totalAceptado);
                 if(parseInt(resp.numeroDeProblema) != parseInt($("#numeroTotalDeProblemas").html())) $("#numeroTotalDeProblemas").html(resp.numeroDeProblema);
@@ -656,7 +657,7 @@ function cargarSelectOffCanvasProblema(){
 
 function busquedaFechaFiltroEnvio(settings, data, dataIndex){
     let fecha = data[3].split('-')
-    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     if(( minFechaEnvio <= date  && date <= maxFechaEnvio )) return true;
     return false;
 }
@@ -713,6 +714,10 @@ function cargarEnvios(){
         ]
         ,
         columnDefs: [
+            {
+                targets: 3,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [1,2,5] },
             { responsivePriority: 2, targets: [0] },
             { responsivePriority: 3, targets: [6]},
@@ -787,7 +792,7 @@ function enviarProblema(){
                 myModalEnvioTorneo.hide();
             }
             else{
-                tableEnvio.ajax.reload(null, false);
+                if(tableEnvio) tableEnvio.ajax.reload(null, false);
                 cartelNotificacion(resp.mensaje);
                 myModalEnvioTorneo.hide();
                 if(resp.envio){
@@ -814,7 +819,7 @@ function juez(idEnv){
                 console.log(resp.descripcion);
             }
             cartelNotificacion(resp.mensaje);
-            tableEnvio.ajax.reload(null, false);
+            if(tableEnvio) tableEnvio.ajax.reload(null, false);
         }
     });
 }
@@ -827,7 +832,11 @@ function cargarTablaPreguntas(){
         ajax: {
             url: '../PHP/cargarPreguntas.php',
             type: "POST",
-            data: datos
+            data: datos,
+            dataSrc: function (json){
+                console.log("Preguntas",json);
+                return json.data;
+            } 
         }
         ,
         "columns": [
@@ -843,6 +852,10 @@ function cargarTablaPreguntas(){
         ]
         ,
         columnDefs: [
+            {
+                targets: 6,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [6,8] },
             { responsivePriority: 2, targets: [3,4,5] },
             { responsivePriority: 3, targets: [2] },
@@ -1047,7 +1060,7 @@ function cargarSelectOffCanvasPregunta(){
 
 function busquedaFechaFiltroPregunta(settings, data, dataIndex){
     let fecha = data[6].split('-');
-    var date = new Date(fecha[1]+'/'+fecha[0]+'/'+fecha[2]);
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     var minimo = new Date(minFechaPregunta);
     var maximo = new Date(maxFechaPregunta);
     if(( minimo <= date && date <= maximo )) return true;

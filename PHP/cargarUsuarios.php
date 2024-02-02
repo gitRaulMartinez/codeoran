@@ -5,7 +5,7 @@
     if(isset($_SESSION['usuario'])) $usuario = $_SESSION['usuario'];
     else die("Error Sesion"); 
     if(!controlPaginaAdministrador($conexion,$usuario)) die("Error admin");   
-    $sql = "SELECT usuario,correo,nombre,foto,activo,nivel,DATE_FORMAT(fechaDeCreacion, '%d-%m-%Y %H:%i:%s') AS fechaDeCreacion,DATE_FORMAT(ultimaConexion, '%d-%m-%Y %H:%i:%s') AS ultimaConexion FROM BD.usuarios INNER JOIN BD.paises WHERE id = pais;"; 
+    $sql = "SELECT usuario,correo,nombre,foto,activo,nivel,fechaDeCreacion,ultimaConexion FROM BD.usuarios INNER JOIN BD.paises WHERE id = pais;"; 
     $resp = mysqli_query($conexion,$sql);
     $arreglo['data'] = [];
     while($data = mysqli_fetch_assoc($resp)){
