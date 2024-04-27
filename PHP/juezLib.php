@@ -1,4 +1,5 @@
 <?php
+    putenv("LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu");
     function compilar($nombre,$lenguaje,$directorio,$test){
         //Nombre del archivo
         //Lenguaje del codigo fuente 
@@ -15,8 +16,8 @@
                 if($lineaT != '') $bandera = false; 
             }
             fclose($fpT);
-            if($test) if(!unlink($error)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el archivo","descripcion" => "Error al eliminar el archivo (Funcion juezLIB)")));
-            if(!$bandera) if(!unlink($ejecutable)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el ejecutable","descripcion" => "Error de eliminacion de ejecutable (Funcion juezLIB)")));
+            if($test) if(file_exists($error)) if(!unlink($error)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el archivo","descripcion" => "Error al eliminar el archivo (Funcion juezLIB)")));
+            if(!$bandera) if(file_exists($ejecutable)) if(!unlink($ejecutable)) die(json_encode(array("error"=>true,"mensaje"=>"No se pudo eliminar el ejecutable","descripcion" => "Error de eliminacion de ejecutable (Funcion juezLIB)")));
             return $bandera;
         }
 
@@ -63,6 +64,7 @@
         if($lenguaje == 'C++' || $lenguaje == 'C'){
             $ejecucion = "../Bash/ejecutar.sh ".$ejecutable." ".$testIn." ".$testOut." ".$testTime;
             exec($ejecucion);
+            exec("../Bash/depurarC.sh ".$ejecutable." ../Datos/Problemas/178/solucion/ldd.txt");
         }
         if($lenguaje == 'Java'){
             $ejecucion = "../Bash/ejecutarJava.sh ".$class." ".$ejecutable." ".$testIn." ".$testOut." ".$testTime;

@@ -480,6 +480,10 @@ function cargarEnviosPerfil(){
         ]
         ,
         columnDefs: [
+            {
+                targets: 3,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [1,2,5] },
             { responsivePriority: 2, targets: [0] },
             { responsivePriority: 3, targets: [6]},

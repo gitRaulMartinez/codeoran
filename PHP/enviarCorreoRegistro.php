@@ -14,7 +14,7 @@
         $hashActivo = sha1($row['hashActivo']);
     }
 
-    $asunto = 'Bievenido';
+    $asunto = 'Bienvenido';
     $mensaje = '
         <div style="width: 100%; display: flex; font-size:15px">
             <div style="width:auto; min-width: 400px; margin: 0 auto; background: #212020; color: white;">

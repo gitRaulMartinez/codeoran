@@ -170,7 +170,4 @@
         echo $penalizacion*numeroDeRespuestasFallidas($conexion,$idProblema,$usuario)."<br>";
         echo $tiempoTotal;
     }
-
-    */
-    //mail("rauldeoran17@gmail.com","asuntillo","Este es el cuerpo del mensaje") 
 ?>

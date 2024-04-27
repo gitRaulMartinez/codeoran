@@ -64,7 +64,18 @@
     }
     if($_POST['metodo'] == "eliminar"){
         $idProblema = $_POST['idProblema'];
+        $idTorneo = $_POST['idTorneo'];
+        /* Obtener letra del problema */
+        $sql = "SELECT letra FROM BD.problemas WHERE idProblema = $idProblema;";
+        $resp = mysqli_query($conexion,$sql);
+        if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
+        while($dato = mysqli_fetch_assoc($resp)) $letraEliminada = $dato['letra'];
+
         $sql = "DELETE FROM BD.problemas WHERE idProblema = $idProblema;";
+        $resp = mysqli_query($conexion,$sql);
+        if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
+
+        $sql = "UPDATE BD.problemas SET letra = CHAR(ASCII(letra)-1) WHERE torneo = $idTorneo AND letra > '$letraEliminada';";
         $resp = mysqli_query($conexion,$sql);
         if(!$resp) die(json_encode(array("error" => true,"mensaje" => "Fallo en la base de datos","descripcion" => 'Query Error'.mysqli_error($conexion))));
         

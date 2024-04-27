@@ -36,6 +36,10 @@ function cargarTablaTorneos(){
         ]
         ,
         columnDefs: [
+            {
+                targets: [4,6],
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [0,1,8,9] },
             { responsivePriority: 3, targets: [3] },
             { responsivePriority: 4, targets: [2]},
@@ -279,7 +283,8 @@ function busquedaDuracionFiltroTorneo(settings, data, dataIndex){
 }
 
 function busquedaFechaFiltroTorneoCreacion(settings, data, dataIndex){
-    var date = new Date(data[4]);
+    let fecha = data[4].split('-');
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     var minimo = new Date(fechaMinimaTorneoCreacion);
     var maximo = new Date(fechaMaximaTorneoCreacion);
     if(( minimo <= date && date <= maximo )) return true;
@@ -295,7 +300,8 @@ function busquedaHoraFiltroTorneoCreacion(settings, data, dataIndex){
 }
 
 function busquedaFechaFiltroTorneoInicio(settings, data, dataIndex){
-    var date = new Date(data[6]);
+    let fecha = data[6].split('-');
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     var minimo = new Date(fechaMinimaTorneoInicio);
     var maximo = new Date(fechaMaximaTorneoInicio);
     if(( minimo <= date && date <= maximo )) return true;

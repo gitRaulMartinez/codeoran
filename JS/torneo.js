@@ -71,6 +71,7 @@ function cargarDatosTorneo(){
                 datosTorneo = {estado: resp.estado, fechaInicio: resp.fechaInicio, fechaFin: resp.fechaFin};
                 if(resp.nombre != $("#torneoNombreMenu")) $("#torneoNombreMenu").html(resp.nombre+' <i class="bi bi-layout-sidebar-reverse"></i>');
                 if(resp.nombre != $("#nombreTorneoOffCanvas").html()) $("#nombreTorneoOffCanvas").html(resp.nombre);
+                if(document.getElementById("titulo-torneo-tablero")) document.getElementById("titulo-torneo-tablero").innerHTML = resp.nombre
                 if(parseInt(resp.posicion) != parseInt($("#posicionTabla").html())) $("#posicionTabla").html(resp.posicion);
                 if(parseInt(resp.totalAceptado) != parseInt($("#numeroDeProblemasCorrectos").html())) $("#numeroDeProblemasCorrectos").html(resp.totalAceptado);
                 if(parseInt(resp.numeroDeProblema) != parseInt($("#numeroTotalDeProblemas").html())) $("#numeroTotalDeProblemas").html(resp.numeroDeProblema);
@@ -655,7 +656,8 @@ function cargarSelectOffCanvasProblema(){
 }
 
 function busquedaFechaFiltroEnvio(settings, data, dataIndex){
-    var date = new Date(data[3]);
+    let fecha = data[3].split('-')
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     if(( minFechaEnvio <= date  && date <= maxFechaEnvio )) return true;
     return false;
 }
@@ -712,6 +714,10 @@ function cargarEnvios(){
         ]
         ,
         columnDefs: [
+            {
+                targets: 3,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [1,2,5] },
             { responsivePriority: 2, targets: [0] },
             { responsivePriority: 3, targets: [6]},
@@ -764,8 +770,6 @@ function cargarEnvios(){
     });
     $("div.filtrosEnvios").html('<div class="btn-group my-2" role="group" aria-label="Basic example"><button class="btn btn-primary px-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFiltroEnvio" aria-controls="offcanvasRight">Filtros</button><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEnvioTorneo">Enviar <i class="bi bi-file-earmark-arrow-up"></i></button></div>');
     $("div.dataTables_length").addClass("my-2");
-
-    setTimeout(function(){tableEnvio.ajax.reload(null, false);},30000); 
 }
 
 function enviarProblema(){
@@ -788,11 +792,12 @@ function enviarProblema(){
                 myModalEnvioTorneo.hide();
             }
             else{
+                if(tableEnvio) tableEnvio.ajax.reload(null, false);
+                cartelNotificacion(resp.mensaje);
+                myModalEnvioTorneo.hide();
                 if(resp.envio){
                     juez(resp.idEnvio);
                 }
-                cartelNotificacion(resp.mensaje);
-                myModalEnvioTorneo.hide();
             }
         }
     });
@@ -814,7 +819,7 @@ function juez(idEnv){
                 console.log(resp.descripcion);
             }
             cartelNotificacion(resp.mensaje);
-            tableEnvio.ajax.reload(null, false);
+            if(tableEnvio) tableEnvio.ajax.reload(null, false);
         }
     });
 }
@@ -827,7 +832,11 @@ function cargarTablaPreguntas(){
         ajax: {
             url: '../PHP/cargarPreguntas.php',
             type: "POST",
-            data: datos
+            data: datos,
+            dataSrc: function (json){
+                console.log("Preguntas",json);
+                return json.data;
+            } 
         }
         ,
         "columns": [
@@ -843,6 +852,10 @@ function cargarTablaPreguntas(){
         ]
         ,
         columnDefs: [
+            {
+                targets: 6,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [6,8] },
             { responsivePriority: 2, targets: [3,4,5] },
             { responsivePriority: 3, targets: [2] },
@@ -1046,7 +1059,8 @@ function cargarSelectOffCanvasPregunta(){
 }
 
 function busquedaFechaFiltroPregunta(settings, data, dataIndex){
-    var date = new Date(data[6]);
+    let fecha = data[6].split('-');
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     var minimo = new Date(minFechaPregunta);
     var maximo = new Date(maxFechaPregunta);
     if(( minimo <= date && date <= maximo )) return true;

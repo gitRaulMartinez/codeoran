@@ -53,6 +53,10 @@ function cargarUsuarios(){
         ]
         ,
         columnDefs: [
+            {
+                targets: [5,7],
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
             { responsivePriority: 1, targets: [0,9,10] },
             { responsivePriority: 3, targets: [1,4] },
             { responsivePriority: 4, targets: [2,3]},
@@ -292,7 +296,8 @@ function cargarOffCanvasFiltroUsuario(){
 }
 
 function busquedaFechaCreacionFiltroUsuario(settings, data, dataIndex){
-    var date = new Date(data[5]);
+    let fecha = data[5].split('-');
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     var minimo = new Date(fechaMinimaCreacion);
     var maximo = new Date(fechaMaximaCreacion);
     if(( minimo <= date && date <= maximo )) return true;
@@ -308,7 +313,8 @@ function busquedaHoraCreacionFiltroUsuario(settings, data, dataIndex){
 }
 
 function busquedaFechaUltimaConexionFiltroUsuario(settings, data, dataIndex){
-    var date = new Date(data[7]);
+    let fecha = data[7].split('-');
+    var date = new Date(fecha[2]+'-'+fecha[1]+'-'+fecha[0]);
     var minimo = new Date(fechaMinimaUltimaConexion);
     var maximo = new Date(fechaMaximaUltimaConexion);
     if(( minimo <= date && date <= maximo )) return true;

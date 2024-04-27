@@ -155,6 +155,7 @@ function cargarOffCanvasFiltroTorneo(){
         });
     }
 
+    
     $.fn.dataTable.ext.search.push(busquedaFechaFiltro);
     $.fn.dataTable.ext.search.push(busquedaTiempoFiltro);
     $.fn.dataTable.ext.search.push(busquedaProblemasFiltro);
@@ -202,10 +203,12 @@ function cargarTorneos(){
             data: {metodo: "tabla"},
             dataSrc: function (json){
                 arrayTorneos = [];
-                console.log(json.data);
+                console.log(json);
                 json.data.forEach(torneo => {
                     if(torneo.estado != 2){
-                        arrayTorneos.push({id: torneo.idTorneo, estado: torneo.estado, fechaInicio: torneo.fechaInicio+' '+torneo.horaInicio, fechaFin: torneo.fechaFin});
+                        const fechaInicio = torneo.fechaInicio;
+                        console.log(fechaInicio);
+                        arrayTorneos.push({id: torneo.idTorneo, estado: torneo.estado, fechaInicio: fechaInicio+' '+torneo.horaInicio, fechaFin: torneo.fechaFin});
                     }
                 });
                 return json.data;
@@ -241,25 +244,23 @@ function cargarTorneos(){
         ,
         "order": [[ 2, "desc" ]]
         ,
-        columnDefs: [ {
-            targets: [ 2 ],
-            orderData: [ 2, 3 ]
-        }
-        ,
-        { responsivePriority: 1, targets: [1,7] },
-        { responsivePriority: 2, targets: [6] },
-        { responsivePriority: 3, targets: [4,5] },
-        { responsivePriority: 4, targets: [2,3]}
-        ,
-        {
-            targets: [0,6,7],
-            orderable: false
-        }
-        ,
-        {
-            targets: [0],
-            visible: false
-        }
+        columnDefs: [
+            {
+                targets: 2,
+                render: DataTable.render.moment('YYYY-MM-DD','DD-MM-YYYY')
+            },
+            { responsivePriority: 1, targets: [1,7] },
+            { responsivePriority: 2, targets: [6] },
+            { responsivePriority: 3, targets: [4,5] },
+            { responsivePriority: 4, targets: [2,3]},
+            {
+                targets: [0,6,7],
+                orderable: false
+            },
+            {
+                targets: [0],
+                visible: false
+            }
         ]
         ,
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]]
@@ -294,7 +295,8 @@ function cargarTorneos(){
 }
 
 function busquedaFechaFiltro(settings, data, dataIndex){
-    var date = new Date(data[2]);
+    let fecha = data[2].split('-')
+    var date = new Date(fecha[2]+'/'+fecha[1]+'/'+fecha[0]);
     if(( minFecha <= date  && date <= maxFecha )) return true;
     return false;
 }
@@ -432,7 +434,6 @@ function ordenSegundos(a,b){
 }
 
 function cargarEnlace(){
-    
     $.ajax({
         url: "../PHP/cargarEnlaceTorneos.php",
         type: "GET",
@@ -461,8 +462,6 @@ function cargarEnlace(){
             }
             else{
                 let resp = JSON.parse(respuesta);
-                console.log(resp);
-                console.log(arrayEnlaces);
                 if(resp.error){
                     cartelNotificacion(resp.mensaje);
                     console.log(resp.descripcion);

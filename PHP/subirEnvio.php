@@ -8,6 +8,7 @@
 
     if(isset($_SESSION['usuario'])){ 
         $nivel = nivelUsuario($conexion,$_SESSION['usuario']);
+        $usuario = $_SESSION['usuario'];
     }
     else die(json_encode(array("error" => true, "mensaje" => "Error Sesion", "descripcion" => "No se encuentra logueado")));
 
@@ -18,8 +19,9 @@
     
     if(!isset($_FILES['archivo'])) die(json_encode(array("error" => false,"envio" => false, "mensaje" => "Ningun archivo subido")));
     
+    $inscripto = usuarioInscriptoTorneo($conexion,$usuario,$idTorneo);
+    if($inscripto == 0 && $nivel == 1) die(json_encode(array("error" => false, "envio" => false, "mensaje" => "No registrado en el torneo")));
     $nombreArchivo = $_FILES['archivo']['name'];
-    $usuario = $_SESSION['usuario'];
     $idProblema = $_POST['idProblema'];
     if($_FILES["archivo"]["error"]>0){
         die(json_encode(array("error" => false,"envio" => false, "mensaje" => "Falla en el archivo")));
