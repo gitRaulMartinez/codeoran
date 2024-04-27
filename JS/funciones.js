@@ -130,6 +130,7 @@ function cargarDatosSesion(){
         url: "../PHP/session.php",
         type: "GET",
         success: function(respuesta){
+            console.log(respuesta)
             if(respuesta == "no"){
                 if(document.getElementById("inicioSessionCaja")){
                     document.getElementById("inicioSessionCaja").innerHTML = `
